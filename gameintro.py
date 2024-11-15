@@ -1,3 +1,4 @@
+
 def print_with_delay(text, delay=0.05):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
     import sys
@@ -15,7 +16,7 @@ def game_intro():
     *** Välkommen till Experimentets Fall ***
 
     Året är 2047. Vetenskapen har nått otänkbara höjder, men med stor kunskap följer stor risk.
-    Du är Dr. Alva Nyström, en briljant men djärv forskare som leder ett topphemligt experiment:
+    Du är Dr. Arnold Schwarzenegger, en briljant men djärv forskare som leder ett topphemligt experiment:
     "Projekt Helios". Syftet? Att utnyttja kvantenergi för att skapa en oändlig energikälla.
     
     Men något går fruktansvärt fel.
@@ -29,7 +30,7 @@ def game_intro():
     Dörrarna är låsta. Varje försök att kontakta omvärlden möts av statisk tystnad. Det är 
     nu upp till dig att hitta en väg ut – innan det som väcks i laboratoriet hittar dig.
 
-    Lycka till, Dr. Nyström. Universum kanske inte får en andra chans.
+    Lycka till, Dr. Schwarzenegger. Universum kanske inte får en andra chans.
     """
     print_with_delay(intro_text)
 
