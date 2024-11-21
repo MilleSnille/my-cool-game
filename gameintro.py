@@ -13,24 +13,24 @@ def print_with_delay(text, delay=0.05):
 def game_intro():
     """Skriver ut backstory för spelet."""
     intro_text = """
-    *** Välkommen till Experimentets Fall ***
+    *** Welcome to President Evil ***
 
-    Året är 2047. Vetenskapen har nått otänkbara höjder, men med stor kunskap följer stor risk.
-    Du är Dr. Arnold Schwarzenegger, en briljant men djärv forskare som leder ett topphemligt experiment:
-    "Projekt Helios". Syftet? Att utnyttja kvantenergi för att skapa en oändlig energikälla.
+    The year is 2047. Science has reached unimaginable heights, but with great knowledge comes great risk.
+    You are Dr. Arnold Schwarzenegger, a brilliant but daring scientist leading a top-secret experiment:
+    "Project Helios". The purpose? Harnessing quantum energy to create an infinite energy source.
     
-    Men något går fruktansvärt fel.
-    Ett oväntat energiöverskott skickar laboratoriet in i kaos. Ljus blixtrar. En hög frekvent 
-    ton skär genom luften. Maskiner exploderar. Kollegor skriker – och sedan... tystnad.
+    But something goes terribly wrong.
+    An unexpected energy surplus sends the laboratory into chaos. Light flashes. A high frequency 
+    tone cuts through the air. Machines explode. Colleagues scream – and then... silence.
 
-    När du vaknar är laboratoriet förändrat. Väggarna pulserar svagt, som om byggnaden 
-    fått liv. Experimentutrustningen verkar ha tagit en egen form av medvetande. Och värst av allt:
-    du är ensam.
+    When you wake up, the laboratory has changed. The walls pulsate faintly, as if the building 
+    given life. The experimental equipment seems to have taken on a form of consciousness of its own. And worst of all:
+    you are alone. 
 
-    Dörrarna är låsta. Varje försök att kontakta omvärlden möts av statisk tystnad. Det är 
-    nu upp till dig att hitta en väg ut – innan det som väcks i laboratoriet hittar dig.
+    The doors are locked. Every attempt to contact the outside world is met with static silence. It is 
+    now it's up to you to find a way out - before what's awakened in the laboratory finds you.
 
-    Lycka till, Dr. Schwarzenegger. Universum kanske inte får en andra chans.
+    Good luck, Dr. Schwarzenegger. The universe may not get a second chance.
     """
     print_with_delay(intro_text)
 
