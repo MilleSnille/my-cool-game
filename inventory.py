@@ -1,3 +1,2 @@
 inventory = [] 
 
-def 
