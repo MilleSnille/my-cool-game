@@ -1,3 +1,5 @@
+import random as rand 
+
 
 def get_user_input ():
     while True:
@@ -6,10 +8,8 @@ def get_user_input ():
         if menytal == "1": 
             print("PICK A CHARACTER")
             print("[1] Janitor \n[2] Chemist")  
-            character = (input("--->"))
             import classes
-
-
+            print (classes)
         elif menytal == "2": 
             import gameintro 
             print(gameintro)
