@@ -10,9 +10,9 @@ def menu_choice():
             if choice == 1: 
                 classes.print_stats()
             elif choice == 2: 
-                print(inventory)
+                inventory.inventory() 
             elif choice == 3:
-                print(doors)
+                doors.door_choice() 
             else: 
                 print("Invalid choice, please choose number 1, 2 or 3") 
         except ValueError: 

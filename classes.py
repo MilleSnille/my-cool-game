@@ -12,7 +12,7 @@ selected_player = None
 
 def print_stats():
     if selected_player: 
-        print(selected_player.name, selected_player.HP, selected_player.STR)
+        print(selected_player.name, selected_player.HP, selected_player.STR) 
     else: 
         print("No player selected.")
 
