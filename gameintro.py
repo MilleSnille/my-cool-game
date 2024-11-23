@@ -1,9 +1,12 @@
+import random as rand
 
-def print_with_delay(text, delay=0.05):
+
+def print_with_delay(text):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
     import sys
     import time
     for char in text:
+        delay = rand.uniform(0.01, 0.15)
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)

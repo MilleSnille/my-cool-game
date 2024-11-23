@@ -19,5 +19,6 @@ def door_choice():
         chosen_alternative = random.choice(door_alternatives) 
         print("You have now encountered a",chosen_alternative)
 
-def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
+# def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
 
+ 
