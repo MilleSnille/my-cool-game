@@ -18,6 +18,20 @@ def door_choice():
     elif door == "3" or door == "right" or door == "Right": 
         chosen_alternative = random.choice(door_alternatives) 
         print("You have now encountered a",chosen_alternative)
+    else: 
+        print("Invalid choice. You have to choose either 1,2 or 3!")
+
+    if chosen_alternative == "Trap": 
+        # Slumpa fram en skada mellan 5 och 20 HP
+        damage = random.randint(5, 20)
+        classes.selected_player.take_damage(damage)
+    elif chosen_alternative == "Monster": 
+        print("Prepare for battle!")
+    elif chosen_alternative == "Chest": 
+        print("Congratulations!") 
+    
+
+
 
 # def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
 

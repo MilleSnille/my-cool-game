@@ -6,6 +6,15 @@ class player:
         self.HP = HP
         self.STR = STR
 
+     
+    def take_damage(self, damage):
+        self.HP -= damage
+        if self.HP < 0:  # Säkerställ att HP inte går under 0
+             self.HP = 0
+        print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
+
+
+
 p1 = player("Janitor", 150, 15)
 p2 = player("Chemist", 100, 25) 
 selected_player = None
