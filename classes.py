@@ -44,7 +44,7 @@ selected_player = None
 
 def print_stats():
     if selected_player: 
-        print(selected_player.name, selected_player.HP, selected_player.STR) 
+        print("**",selected_player.name,"**\n""HP:", selected_player.HP,"\nSTR:" ,selected_player.STR) 
     else: 
         print("No player selected.")
 
@@ -55,11 +55,11 @@ def my_character():
         try: 
             character = int(input("---> "))
             if character == 1: 
-                print("*", p1.name, "*", "\nHP:", p1.HP, "\nSTRENGTH:", p1.STR)
+                print("\n*", p1.name, "*", "\nHP:", p1.HP, "\nSTRENGTH:", p1.STR)
                 selected_player = p1
                 break
             elif character == 2:  
-                print("*", p2.name, "*", "\nHP:", p2.HP, "\nSTRENGTH:", p2.STR)
+                print("\n*", p2.name, "*", "\nHP:", p2.HP, "\nSTRENGTH:", p2.STR)
                 selected_player = p2
                 break
             else: 

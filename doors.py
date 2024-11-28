@@ -24,16 +24,41 @@ def get_random_chest_item():
 
 def add_random_item(): 
     global random_item
-    C = input("Do you want to equip this item? [Y] or [N]\n ")
-    if C == "y" or "Y": 
-        print("You pick the item up")
-        inventory.inv.append(random_item)
+    if len(inventory.inv) >= 5: 
+        print("\nYour inventory is full. You must replace an item to equip this one.")
+        print("Current inventory:")
+            
+        index = 1 
+        for item in inventory.inv:
+            print(f"{index}. {item.name} (STR: {item.STR}, HP: {item.HP})")
+            index += 1
         
-    elif C == "n" or "N": 
-        print("You leave the item")
-        
+        print(f"\nThe chest contains: {random_item.name} (STR: {random_item.STR}, HP: {random_item.HP} ")
+
+        while True: 
+            choice = input("Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the chest.")
+            if choice.lower() in ["n","no"]: 
+                print("You left the item.")
+                return
+            else: 
+                choice = int(choice) -1 
+                if choice >= 0 and choice <= 5: 
+                    print(f"You replaced {inventory.inv[choice].name} with {random_item.name}")
+                    inventory.inv[choice] = random_item
+                    return
+                else: 
+                    print("Invalid choice. you have to choose a number within your inventory.")
     else: 
-        print("You have to choose [Y] or [N]!")
+        C = input("Do you want to equip this item? [Y] or [N]\n ")
+        if C == "y" or "Y": 
+            print("You picked up the item!")
+            inventory.inv.append(random_item)
+            
+        elif C == "n" or "N": 
+            print("You leave the item")
+            
+        else: 
+            print("You have to choose [Y] or [N]!")
 
 
 def door_choice(): 
@@ -58,8 +83,8 @@ def door_choice():
     elif chosen_alternative == "Monster": 
         print("Prepare for battle!")
     elif chosen_alternative == "Chest":    
-        print("You found a chest, it's dangerous to go alone") 
-        print(f"You find: {get_random_chest_item()}") 
+        # print("Congratulations, You found a chest!") 
+        print(f"It contained: {get_random_chest_item()}") 
         add_random_item()
     
 
