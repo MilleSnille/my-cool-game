@@ -6,7 +6,7 @@ def menu_choice():
     
     while True: 
         try: 
-            choice =int(input("Choose one of the 3 below\n\n[1] STATISTICS\n[2] LOOK AT YOUR INVENTORY\n[3] PICK A DOOR\n")) 
+            choice =int(input("Choose one of the 3 below\n[1] STATISTICS\n[2] LOOK AT YOUR INVENTORY\n[3] PICK A DOOR\n")) 
             if choice == 1: 
                 classes.print_stats()
             elif choice == 2: 
