@@ -2,6 +2,7 @@ import classes
 import inventory
 import doors
 
+
 def menu_choice(): 
     
     while True: 
@@ -10,7 +11,7 @@ def menu_choice():
             if choice == 1: 
                 classes.print_stats()
             elif choice == 2: 
-                inventory.inventory() 
+                inventory.inventory()
             elif choice == 3:
                 doors.door_choice() 
             else: 

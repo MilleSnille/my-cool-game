@@ -1,4 +1,4 @@
-
+import time
 
 
 inv = []
@@ -12,6 +12,7 @@ def inventory():
         print("YOUR INVENTORY:")
         for item in inv: 
             print(item)
+            time.sleep(1.0)
     
         
 
