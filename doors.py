@@ -2,7 +2,6 @@ import classes
 import random as rand
 import inventory
 
-
 door_alternatives = ["Trap", "Monster", "Chest" ] 
 # chosen_alternative = random.choice(door_alternatives) 
 
@@ -70,7 +69,13 @@ def add_random_item():
         if C == "Y" or C == "y": 
             print("You picked up the item!")
             inventory.inv.append(random_item)
+            classes.p1.STR += random_item.STR
+            classes.p2.STR += random_item.STR
+            classes.p1.HP += random_item.HP
+            classes.p2.HP += random_item.HP
             
+
+
         elif C == "N" or C == "n": 
             print("You leave the item")
             
