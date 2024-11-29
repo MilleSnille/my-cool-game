@@ -7,6 +7,23 @@ door_alternatives = ["Trap", "Monster", "Chest" ]
 # chosen_alternative = random.choice(door_alternatives) 
 
 
+def get_random_enemy(): 
+    global random_enemy
+    enemy_types = [
+        classes.enemy("ZOMBIE", 100, 5),
+        classes.enemy("SCOBBY DOO", 55, 20),
+        classes.enemy("DIDDY", 150, 10),
+        classes.enemy("Terminator", 200, 15)
+    ]
+
+    random_enemy = rand.choice(enemy_types)
+    return random_enemy
+    
+
+def enemy_encounter(): 
+    global random_enemy
+    print(f"You encounter {get_random_enemy()}")
+
 def get_random_chest_item():
     global random_item
     chest_items = [
@@ -37,28 +54,28 @@ def add_random_item():
 
         while True: 
             choice = input("Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the chest.")
-            if choice.lower() in ["n","no"]: 
+            if choice.lower() == "n": 
                 print("You left the item.")
-                return
+                #return
             else: 
                 choice = int(choice) -1 
                 if choice >= 0 and choice <= 5: 
                     print(f"You replaced {inventory.inv[choice].name} with {random_item.name}")
                     inventory.inv[choice] = random_item
-                    return
+                    #return
                 else: 
-                    print("Invalid choice. you have to choose a number within your inventory.")
+                    print("Invalid choice. you have to choose a number within your inventory, [1] - [5]")
     else: 
-        C = input("Do you want to equip this item? [Y] or [N]\n ")
-        if C == "y" or "Y": 
+        C = input("Do you want to equip this item? [Y] or [N]\n")
+        if C == "Y" or C == "y": 
             print("You picked up the item!")
             inventory.inv.append(random_item)
             
-        elif C == "n" or "N": 
+        elif C == "N" or C == "n": 
             print("You leave the item")
             
         else: 
-            print("You have to choose [Y] or [N]!")
+            print("You have to choose [Y] or [N]!") 
 
 
 def door_choice(): 
@@ -82,14 +99,11 @@ def door_choice():
         classes.selected_player.take_damage(damage)
     elif chosen_alternative == "Monster": 
         print("Prepare for battle!")
+        enemy_encounter() 
+
     elif chosen_alternative == "Chest":    
         # print("Congratulations, You found a chest!") 
         print(f"It contained: {get_random_chest_item()}") 
         add_random_item()
-    
+    # def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
 
-
-
-# def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
-
- 

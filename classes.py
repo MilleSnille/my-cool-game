@@ -1,4 +1,4 @@
-import random as rand
+import random
 
 class player: 
     def __init__(self, name, HP, STR):
@@ -11,9 +11,16 @@ class player:
     def take_damage(self, damage):
         self.HP -= damage
         if self.HP < 0:  # Säkerställ att HP inte går under 0
-             self.HP = 0
+            self.HP = 0
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
-
+    
+while True:
+    def death(self): 
+        if self.HP < 0: 
+            self.HP = 0 
+            print("YOU DIED") 
+    break
+    
     
     
 class item:
@@ -28,14 +35,6 @@ name : {self.name}
 STR : {self.STR}
 HP : {self.HP}"""
         return item_print
-
-
-# i1 = item("Sword", 30)
-# i2 = item("Acid bottle", 20)
-# i3 = item("Mop", 10)
-# i4 = item("Glass Shard", 15)
-# i5 = item("Energy Sword", 40)
-# i6 = item("Fire Flower", 45)
 
 
 p1 = player("Janitor", 150, 15)
@@ -67,9 +66,6 @@ def my_character():
         except ValueError:
             print("Invalid input! Please choose; 1 or 2\n") 
 
-# my_character()
-# print_stats() 
-
 
 class enemy: 
     def __init__(self, name, HP, STR):
@@ -77,19 +73,22 @@ class enemy:
         self.HP = HP
         self.STR = STR
 
-e1 = enemy("ZOMBIE", 100, 5)
-e2 = enemy("SCOBBY DOO", 55, 20)
-e3 = enemy("DIDDY", 150, 10)
-selected_enemy = None
+    def __str__(self): 
+        enemy_print = f"""
+name : {self.name}
+STR : {self.STR}
+HP : {self.HP}"""
+        return enemy_print
 
-def rand_enemy ():
-    global selected_enemy
-    while True:
-        list = [1,2,3]
+
+# def rand_enemy ():
+#     global selected_enemy
+#     while True:
+#         list = [1,2,3]
            
-        if list == 1:
-            print(e1.name)
-        elif list == 2:
-            print(e2.name)
-        elif list == 3:
-            print(e3.name)
+#         if list == 1:
+#             print(e1.name)
+#         elif list == 2:
+#             print(e2.name)
+#         elif list == 3:
+#             print(e3.name)
