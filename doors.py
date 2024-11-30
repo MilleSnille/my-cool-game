@@ -2,7 +2,7 @@ import classes
 import random as rand
 import inventory
 
-door_alternatives = ["spike", "shard", "Monster", "Chest" ] 
+door_alternatives = ["infested room", "entoxicated room", "Monster", "Chest" ] 
 # chosen_alternative = random.choice(door_alternatives) 
 
 def get_random_enemy(): 
@@ -91,18 +91,18 @@ def door_choice():
     else: 
         print("There are only three doors, choose either [1], [2] or [3]!")
 
-    if chosen_alternative == "spike": 
+    if chosen_alternative == "burning room": 
         # Slumpa fram en skada mellan 5 och 20 HP
         damage = rand.randint(4, 20)
         classes.selected_player.take_damage(damage)
-    elif chosen_alternative == "shard":
+    elif chosen_alternative == "infested room":
         damage = rand.randint(2, 15)
         classes.selected_player.take_damage(damage)
-    elif chosen_alternative == "Monster": 
-        print("Prepare for battle!")
+    elif chosen_alternative == "infested monster": 
+        print("Try and Survive!")
         enemy_encounter() 
     elif chosen_alternative == "Chest":    
-        print("You found a chest!") 
+        print("You found a Chest!") 
         print(f"It contains a {get_random_chest_item()}") 
         add_random_item()
 
