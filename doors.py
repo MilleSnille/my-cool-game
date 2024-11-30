@@ -24,12 +24,12 @@ def enemy_encounter():
 def get_random_chest_item():
     global random_item
     chest_items = [
-        classes.item("Dissecting Set", 15, 0),
-        classes.item("Acid bottle", 20, 0),
-        classes.item("Mop", 10, 0),
-        classes.item("Glass Shard", 15, 0),
-        classes.item("Energy Sword", 30, 0),
-        classes.item("Fire Flower", 25, 0),
+        classes.item("Dissecting Set", 10, 0),
+        classes.item("Acid bottle", 15, 0),
+        classes.item("Mop", 8, 0),
+        classes.item("Glass Shard", 12, 0),
+        classes.item("Energy Sword", 25, 0),
+        classes.item("Fire Flower", 20, 0),
         classes.item("Estus Flask", 0, 100)
     ]
     random_item = rand.choice(chest_items)
