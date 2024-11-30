@@ -2,7 +2,7 @@ import classes
 import random as rand
 import inventory
 
-door_alternatives = ["infested room", "entoxicated room", "Monster", "Chest" ] 
+door_alternatives = ["infested room", "burning room", "Monster", "Chest" ] 
 # chosen_alternative = random.choice(door_alternatives) 
 
 def get_random_enemy(): 
@@ -10,8 +10,8 @@ def get_random_enemy():
     enemy_types = [
         classes.enemy("ZOMBIE", 100, 5),
         classes.enemy("SCOBBY DOO", 55, 20),
-        classes.enemy("DIDDY", 150, 10),
-        classes.enemy("Terminator", 200, 15)
+        classes.enemy("DIDDY", 150, 50),
+        classes.enemy("Terminator", 200, 100)
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy
@@ -20,6 +20,24 @@ def get_random_enemy():
 def enemy_encounter(): 
     global random_enemy
     print(f"You encounter {get_random_enemy()}")
+    flee_or_fight = input(f"you've still got time to Flee! But remember, if you don't fight {random_enemy.name}, you might not get out of here!\n[1]Fight\n[2]Flee") 
+    if flee_or_fight == "1" or flee_or_fight == "Fight" or flee_or_fight == "fight": 
+        enemy_hp_damage = rand.randint(10,20)
+        if classes.selected_player.HP / random_enemy.STR < random_enemy.HP / classes.selected_player.STR: 
+            classes.p1.HP -= enemy_hp_damage
+            classes.p2.HP -= enemy_hp_damage
+            print(f"{random_enemy.name} was stronger than you! You lost {enemy_hp_damage} HP.")
+        elif classes.selected_player.HP / random_enemy.STR > random_enemy.HP / classes.selected_player.STR: 
+            print(f"Congratulations! You were stronger than {random_enemy.name}")
+            classes.p1.LVL += 1
+            classes.p2.LVL += 1
+            print(f"You defeated the monster and leveled up to LVL:{classes.selected_player.LVL}")
+        else: 
+            print(f"You and {random_enemy.name} were evenly strong. {random_enemy.name} fled!")
+    elif flee_or_fight == "2" or flee_or_fight =="Flee" or flee_or_fight == "flee":  
+        print(f"You escaped {random_enemy.name}")
+
+
 
 def get_random_chest_item():
     global random_item
@@ -51,11 +69,13 @@ def add_random_item():
             choice = input("Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the item.")
             if choice.lower() == "n": 
                 print("You left the item behind.")
+                return
             else: 
                 choice = int(choice) -1 
                 if choice >= 0 and choice <= 5: 
                     print(f"You replaced {inventory.inv[choice].name} with {random_item.name}")
                     inventory.inv[choice] = random_item
+                    return
                 else: 
                     print("Invalid input. You have to choose a number within your inventory, [1] - [5]")
     else: 
@@ -67,6 +87,9 @@ def add_random_item():
             classes.p2.STR += random_item.STR
             classes.p1.HP += random_item.HP
             classes.p2.HP += random_item.HP
+            classes.p1.LVL += 1 
+            classes.p2.LVL += 1
+            print(f"you leveled up to LVL:{classes.selected_player.LVL}")
             
         elif C == "N" or C == "n": 
             print("You leave the item behind and journey forth")
@@ -98,7 +121,7 @@ def door_choice():
     elif chosen_alternative == "infested room":
         damage = rand.randint(2, 15)
         classes.selected_player.take_damage(damage)
-    elif chosen_alternative == "infested monster": 
+    elif chosen_alternative == "Monster": 
         print("Try and Survive!")
         enemy_encounter() 
     elif chosen_alternative == "Chest":    

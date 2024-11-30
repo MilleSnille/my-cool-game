@@ -1,10 +1,11 @@
 
 class player: 
-    def __init__(self, name, HP, STR):
+    def __init__(self, name, HP, STR, LVL):
         self.name = name
         self.HP = HP
         self.STR = STR
         self.inventory = []
+        self.LVL = LVL
 
      
     def take_damage(self, damage):
@@ -15,7 +16,7 @@ class player:
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
     
     def death(self): 
-        print("YOU DIED") 
+        print("YOU DIED! GAME OVER...") 
         exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
         
     
@@ -29,19 +30,19 @@ class item:
     
     def __str__(self): 
         item_print = f"""
-name : {self.name}
+**{self.name}**
 STR : {self.STR}
 HP : {self.HP}"""
         return item_print
 
 
-p1 = player("Janitor", 150, 15)
-p2 = player("Chemist", 100, 25) 
+p1 = player("Janitor", 150, 15, 1)
+p2 = player("Chemist", 100, 25 ,1) 
 selected_player = None
 
 def print_stats():
     if selected_player: 
-        print("**",selected_player.name,"**\n""HP:", selected_player.HP,"\nSTR:" ,selected_player.STR) 
+        print("**",selected_player.name,"**\n""HP:", selected_player.HP,"\nSTR:" ,selected_player.STR, "\nLVL:", selected_player.LVL) 
     else: 
         print("No player selected.")
 
@@ -52,11 +53,11 @@ def my_character():
         try: 
             character = int(input("---> "))
             if character == 1: 
-                print("\n*", p1.name, "*", "\nHP:", p1.HP, "\nSTRENGTH:", p1.STR)
+                print("\n*", p1.name, "*", "\nHP:", p1.HP, "\nSTRENGTH:", p1.STR, "\nLVL:", p1.LVL)
                 selected_player = p1
                 break
             elif character == 2:  
-                print("\n*", p2.name, "*", "\nHP:", p2.HP, "\nSTRENGTH:", p2.STR)
+                print("\n*", p2.name, "*", "\nHP:", p2.HP, "\nSTRENGTH:", p2.STR, "\nLVL:", p2.LVL)
                 selected_player = p2
                 break
             else: 
@@ -73,7 +74,7 @@ class enemy:
 
     def __str__(self): 
         enemy_print = f"""
-name : {self.name}
+**{self.name}**
 STR : {self.STR}
 HP : {self.HP}"""
         return enemy_print
