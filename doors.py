@@ -55,13 +55,11 @@ def add_random_item():
             choice = input("Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the chest.")
             if choice.lower() == "n": 
                 print("You left the item.")
-                #return
             else: 
                 choice = int(choice) -1 
                 if choice >= 0 and choice <= 5: 
                     print(f"You replaced {inventory.inv[choice].name} with {random_item.name}")
                     inventory.inv[choice] = random_item
-                    #return
                 else: 
                     print("Invalid choice. you have to choose a number within your inventory, [1] - [5]")
     else: 
@@ -85,30 +83,36 @@ def add_random_item():
 
 def door_choice(): 
     global door_alternatives
+    chosen_alternative = None #<-- detta ger den ett standardvärde vilket gör så att även om spelaren skriver in annat än "1, 2 eller 3" så kraschar inte spelet.
+
     door = (input("You have come to 3 doors. You will now either get to open a chest, fight a monster or encounter a trap!\nChoose one of the 3 doors.\n[1]LEFT\n[2]FORWARD\n[3]RIGHT\n"))
+    # try:
     if door == "1" or door == "left" or door == "Left":  
         chosen_alternative = rand.choice(door_alternatives) 
         print("You have now encountered a", chosen_alternative)
-    elif door == "2" or door == "forward" or door == "Forward": 
+    elif door == "2" or door == "middle" or door == "Middle": 
         chosen_alternative = rand.choice(door_alternatives) 
         print("You have now encountered a", chosen_alternative)
     elif door == "3" or door == "right" or door == "Right": 
         chosen_alternative = rand.choice(door_alternatives) 
         print("You have now encountered a", chosen_alternative)
     else: 
-        print("Invalid choice. You have to choose either 1,2 or 3!")
+        print("There are only three doors, choose either [1], [2] or [3]!")
 
     if chosen_alternative == "Trap": 
         # Slumpa fram en skada mellan 5 och 20 HP
-        damage = rand.randint(5, 20)
+        damage = rand.randint(4, 20)
         classes.selected_player.take_damage(damage)
     elif chosen_alternative == "Monster": 
         print("Prepare for battle!")
         enemy_encounter() 
 
     elif chosen_alternative == "Chest":    
-        # print("Congratulations, You found a chest!") 
-        print(f"It contained: {get_random_chest_item()}") 
+        print("You found a chest!") 
+        print(f"It contains a {get_random_chest_item()}") 
         add_random_item()
+    # except: 
+    #     print("There is only three doors! Choose either [1], [2] or [3]\n")
+
     # def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
 
