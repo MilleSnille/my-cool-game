@@ -52,18 +52,18 @@ def add_random_item():
         print(f"\nThe chest contains: {random_item.name} (STR: {random_item.STR}, HP: {random_item.HP} ")
 
         while True: 
-            choice = input("Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the chest.")
+            choice = input(f"Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the {item.name}.")
             if choice.lower() == "n": 
-                print("You left the item.")
+                print("You left the item behind.")
             else: 
                 choice = int(choice) -1 
                 if choice >= 0 and choice <= 5: 
                     print(f"You replaced {inventory.inv[choice].name} with {random_item.name}")
                     inventory.inv[choice] = random_item
                 else: 
-                    print("Invalid choice. you have to choose a number within your inventory, [1] - [5]")
+                    print("Invalid input. You have to choose a number within your inventory, [1] - [5]")
     else: 
-        C = input("Do you want to equip this item? [Y] or [N]\n")
+        C = input("Do you want to take this item with you? [Y] or [N]\n")
         if C == "Y" or C == "y": 
             print("You picked up the item!")
             inventory.inv.append(random_item)
@@ -75,18 +75,17 @@ def add_random_item():
 
 
         elif C == "N" or C == "n": 
-            print("You leave the item")
+            print("You leave the item behind and journey forth")
             
         else: 
-            print("You have to choose [Y] or [N]!") 
+            print("You have to pick; [Y] or [N]!") 
 
 
 def door_choice(): 
     global door_alternatives
     chosen_alternative = None #<-- detta ger den ett standardvärde vilket gör så att även om spelaren skriver in annat än "1, 2 eller 3" så kraschar inte spelet.
 
-    door = (input("You have come to 3 doors. You will now either get to open a chest, fight a monster or encounter a trap!\nChoose one of the 3 doors.\n[1]LEFT\n[2]FORWARD\n[3]RIGHT\n"))
-    # try:
+    door = (input("You have come to a crossroads with 3 doors. You may proceed into the unknown... \n(Enter one of the 3 doors.)\n[1]LEFT\n[2]FORWARD\n[3]RIGHT\n"))
     if door == "1" or door == "left" or door == "Left":  
         chosen_alternative = rand.choice(door_alternatives) 
         print("You have now encountered a", chosen_alternative)
@@ -111,8 +110,6 @@ def door_choice():
         print("You found a chest!") 
         print(f"It contains a {get_random_chest_item()}") 
         add_random_item()
-    # except: 
-    #     print("There is only three doors! Choose either [1], [2] or [3]\n")
 
     # def door_encounter():#skapar en funktion som bestämmer vad som händer när man möter trap, monster eller chest
 

@@ -14,26 +14,27 @@ def print_with_delay(text):
 
 
 def game_intro():
-    """Skriver ut backstory för spelet."""
+    """Prints the backstory for the game."""
     intro_text = """
-    *** Welcome to President Evil ***
+    *** President Evil ***
 
-    The year is 2047. Science has reached unimaginable heights, but with great knowledge comes great risk.
-    You are Dr. Arnold Schwarzenegger, a brilliant but daring scientist leading a top-secret experiment:
-    "Project Helios". The purpose? Harnessing quantum energy to create an infinite energy source.
+    The year is 1984. Science has reached unimaginable heights, but with great knowledge comes great risk.
+    You're name is Arnold Schwarzenegger, a new employee at a top secret russian facility where 
+    they are working on a dangerousexperiment: "Project Helios". The purpose? 
+    Harnessing quantum energy to create a virus that could take down the Americans.
     
-    But something goes terribly wrong.
+    But suddenly something goes terribly wrong.
     An unexpected energy surplus sends the laboratory into chaos. Light flashes. A high frequency 
     tone cuts through the air. Machines explode. Colleagues scream – and then... silence.
 
     When you wake up, the laboratory has changed. The walls pulsate faintly, as if the building 
-    given life. The experimental equipment seems to have taken on a form of consciousness of its own. And worst of all:
-    you are alone. 
+    given life. The scientist seem to have taken on a form that dosn't look human. And worst of all:
+    you are alone.
 
-    The doors are locked. Every attempt to contact the outside world is met with static silence. It is 
-    now it's up to you to find a way out - before what's awakened in the laboratory finds you.
+    The air is stagnant and every attempt to contact the outside world is met with static silence. It is 
+    now up to you to find a way out - before what's awakened in the laboratory finds you.
 
-    Good luck, Dr. Schwarzenegger. The universe may not get a second chance.
+    Good luck, Schwarzenegger. Earth is counting on you to save it... 
     """
     print_with_delay(intro_text)
 
