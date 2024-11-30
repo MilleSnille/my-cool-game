@@ -2,9 +2,8 @@ import classes
 import random as rand
 import inventory
 
-door_alternatives = ["Trap", "Monster", "Chest" ] 
+door_alternatives = ["spike", "shard", "Monster", "Chest" ] 
 # chosen_alternative = random.choice(door_alternatives) 
-
 
 def get_random_enemy(): 
     global random_enemy
@@ -14,7 +13,6 @@ def get_random_enemy():
         classes.enemy("DIDDY", 150, 10),
         classes.enemy("Terminator", 200, 15)
     ]
-
     random_enemy = rand.choice(enemy_types)
     return random_enemy
     
@@ -26,7 +24,7 @@ def enemy_encounter():
 def get_random_chest_item():
     global random_item
     chest_items = [
-        classes.item("Wood Sword", 15, 0),
+        classes.item("Dissecting Set", 15, 0),
         classes.item("Acid bottle", 20, 0),
         classes.item("Mop", 10, 0),
         classes.item("Glass Shard", 15, 0),
@@ -34,7 +32,6 @@ def get_random_chest_item():
         classes.item("Fire Flower", 25, 0),
         classes.item("Estus Flask", 0, 100)
     ]
-
     random_item = rand.choice(chest_items)
     return random_item
 
@@ -48,11 +45,10 @@ def add_random_item():
         for item in inventory.inv:
             print(f"{index}. {item.name} (STR: {item.STR}, HP: {item.HP})")
             index += 1
-        
         print(f"\nThe chest contains: {random_item.name} (STR: {random_item.STR}, HP: {random_item.HP} ")
 
         while True: 
-            choice = input(f"Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the {item.name}.")
+            choice = input("Do you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the item.")
             if choice.lower() == "n": 
                 print("You left the item behind.")
             else: 
@@ -72,11 +68,8 @@ def add_random_item():
             classes.p1.HP += random_item.HP
             classes.p2.HP += random_item.HP
             
-
-
         elif C == "N" or C == "n": 
             print("You leave the item behind and journey forth")
-            
         else: 
             print("You have to pick; [Y] or [N]!") 
 
@@ -98,14 +91,16 @@ def door_choice():
     else: 
         print("There are only three doors, choose either [1], [2] or [3]!")
 
-    if chosen_alternative == "Trap": 
+    if chosen_alternative == "spike": 
         # Slumpa fram en skada mellan 5 och 20 HP
         damage = rand.randint(4, 20)
+        classes.selected_player.take_damage(damage)
+    elif chosen_alternative == "shard":
+        damage = rand.randint(2, 15)
         classes.selected_player.take_damage(damage)
     elif chosen_alternative == "Monster": 
         print("Prepare for battle!")
         enemy_encounter() 
-
     elif chosen_alternative == "Chest":    
         print("You found a chest!") 
         print(f"It contains a {get_random_chest_item()}") 

@@ -1,4 +1,3 @@
-import random
 
 class player: 
     def __init__(self, name, HP, STR):
@@ -10,16 +9,15 @@ class player:
      
     def take_damage(self, damage):
         self.HP -= damage
-        if self.HP < 0:  # Säkerställ att HP inte går under 0
+        if self.HP < 0:  # Säkerställer att HP inte går under 0
             self.HP = 0
+            self.death() #<-- här aktiveras funktionen "death" i funktionen "take damage". 
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
     
-while True:
     def death(self): 
-        if self.HP < 0: 
-            self.HP = 0 
-            print("YOU DIED") 
-    break
+        print("YOU DIED") 
+        exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
+        
     
     
     
@@ -79,16 +77,3 @@ name : {self.name}
 STR : {self.STR}
 HP : {self.HP}"""
         return enemy_print
-
-
-# def rand_enemy ():
-#     global selected_enemy
-#     while True:
-#         list = [1,2,3]
-           
-#         if list == 1:
-#             print(e1.name)
-#         elif list == 2:
-#             print(e2.name)
-#         elif list == 3:
-#             print(e3.name)
