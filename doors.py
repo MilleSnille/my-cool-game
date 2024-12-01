@@ -32,6 +32,7 @@ def enemy_encounter():
             classes.p1.LVL += 1
             classes.p2.LVL += 1
             print(f"You defeated the monster and leveled up to LVL:{classes.selected_player.LVL}")
+            classes.selected_player.game_ending()
         else: 
             print(f"You and {random_enemy.name} were evenly strong. {random_enemy.name} fled!")
     elif flee_or_fight == "2" or flee_or_fight =="Flee" or flee_or_fight == "flee":  
@@ -90,7 +91,7 @@ def add_random_item():
             classes.p1.LVL += 1 
             classes.p2.LVL += 1
             print(f"you leveled up to LVL:{classes.selected_player.LVL}")
-            
+            classes.selected_player.game_ending() 
         elif C == "N" or C == "n": 
             print("You leave the item behind and journey forth")
         else: 

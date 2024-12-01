@@ -39,5 +39,16 @@ def game_intro():
     print_with_delay(intro_text)
 
 # Kör backstory-funktionen när spelet startar
-game_intro()
+#game_intro()
+
+def game_outro():
+    outro_text = """Victory
+You escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
+"Schwarzenegger, you saved us all. Rest now, but stay ready."
+
+The world is safe... For now.
+
+Game Complete!
+Thank you for playing."""
+    print_with_delay(outro_text)
  

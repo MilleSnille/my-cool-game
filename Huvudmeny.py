@@ -1,5 +1,6 @@
 import classes
 import minimeny 
+import gameintro
 
 
 def get_user_input():
@@ -14,8 +15,8 @@ def get_user_input():
             
             
         elif menytal == "2":  
-            import gameintro
-            print(gameintro)
+            #print(gameintro)
+            gameintro.game_intro()
 
         elif menytal == "3": 
             print("Program Terminated")

@@ -18,8 +18,14 @@ class player:
     def death(self): 
         print("YOU DIED! GAME OVER...") 
         exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
+
+    def game_ending(self):
+        if self.LVL == 10:
+            import gameintro
+            gameintro.game_outro()
+            exit()
         
-    
+
     
     
 class item:
