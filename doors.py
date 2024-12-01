@@ -2,7 +2,7 @@ import classes
 import random as rand
 import inventory
 
-door_alternatives = ["infested room", "burning room", "Monster", "Chest" ] 
+door_alternatives = ["infested room", "burning room", "Entity", "Chest" ] 
 # chosen_alternative = random.choice(door_alternatives) 
 
 def get_random_enemy(): 
@@ -11,7 +11,7 @@ def get_random_enemy():
         classes.enemy("ZOMBIE", 100, 5),
         classes.enemy("SCOBBY DOO", 55, 20),
         classes.enemy("DIDDY", 150, 50),
-        classes.enemy("Terminator", 200, 100)
+        classes.enemy(" The Terminator", 200, 100)
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy
@@ -20,7 +20,7 @@ def get_random_enemy():
 def enemy_encounter(): 
     global random_enemy
     print(f"You encounter {get_random_enemy()}")
-    flee_or_fight = input(f"you've still got time to Flee! But remember, if you don't fight {random_enemy.name}, you might not get out of here!\n[1]Fight\n[2]Flee") 
+    flee_or_fight = input(f"You've still got time to Flee! But remember, if you don't fight {random_enemy.name}, you might not get out of here!\n[1]Fight\n[2]Flee\n") 
     if flee_or_fight == "1" or flee_or_fight == "Fight" or flee_or_fight == "fight": 
         enemy_hp_damage = rand.randint(10,20)
         if classes.selected_player.HP / random_enemy.STR < random_enemy.HP / classes.selected_player.STR: 
@@ -116,13 +116,14 @@ def door_choice():
         print("There are only three doors, choose either [1], [2] or [3]!")
 
     if chosen_alternative == "burning room": 
-        # Slumpa fram en skada mellan 5 och 20 HP
-        damage = rand.randint(4, 20)
+        # Slumpa fram en skada mellan 5 och 15 HP
+        damage = rand.randint(4, 15)
         classes.selected_player.take_damage(damage)
     elif chosen_alternative == "infested room":
-        damage = rand.randint(2, 15)
+        # Slumpa fram mellan 2 och 10 HP, som den andra fällan fast mindre skada
+        damage = rand.randint(2, 10)
         classes.selected_player.take_damage(damage)
-    elif chosen_alternative == "Monster": 
+    elif chosen_alternative == "Entity": 
         print("Try and Survive!")
         enemy_encounter() 
     elif chosen_alternative == "Chest":    

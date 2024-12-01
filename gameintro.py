@@ -42,7 +42,7 @@ def game_intro():
 #game_intro()
 
 def game_outro():
-    outro_text = """Victory
+    outro_text = """Victory Achieved
 You escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
 "Schwarzenegger, you saved us all. Rest now, but stay ready."
 
