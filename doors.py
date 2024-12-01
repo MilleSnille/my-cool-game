@@ -2,6 +2,13 @@ import classes
 import random as rand
 import inventory
 
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+BLUE = "\033[34m"
+RESET = "\033[0m"
+# Olika färger man kan ha på text i terminalen
+
 door_alternatives = ["infested room", "burning room", "Entity", "Chest" ] 
 # chosen_alternative = random.choice(door_alternatives) 
 
@@ -10,8 +17,8 @@ def get_random_enemy():
     enemy_types = [
         classes.enemy("ZOMBIE", 100, 5),
         classes.enemy("SCOBBY DOO", 55, 20),
-        classes.enemy("DIDDY", 150, 50),
-        classes.enemy(" The Terminator", 200, 100)
+        classes.enemy("DIDDY", 125, 50),
+        classes.enemy("The Terminator", 150, 75)
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy
@@ -62,7 +69,7 @@ def add_random_item():
             
         index = 1 
         for item in inventory.inv:
-            print(f"{index}. {item.name} (STR: {item.STR}, HP: {item.HP})")
+            print(f"{index}. {item.name} (STR: {item.STR}, HP:{item.HP})")
             index += 1
         print(f"\nThe chest contains: {random_item.name} (STR: {random_item.STR}, HP: {random_item.HP} ")
 
@@ -90,7 +97,7 @@ def add_random_item():
             classes.p2.HP += random_item.HP
             classes.p1.LVL += 1 
             classes.p2.LVL += 1
-            print(f"you leveled up to LVL:{classes.selected_player.LVL}")
+            print(f"You leveled up to{BLUE} LVL:{classes.selected_player.LVL}{RESET}")
             classes.selected_player.game_ending() 
         elif C == "N" or C == "n": 
             print("You leave the item behind and journey forth")

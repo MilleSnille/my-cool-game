@@ -1,5 +1,8 @@
 import random as rand
 
+FAT_STYLE = "\033[1m"
+RESET = "\033[0m"
+VIT = "\033[47m"
 
 def print_with_delay(text):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
@@ -20,7 +23,7 @@ def game_intro():
 
     The year is 1984. Science has reached unimaginable heights, but with great knowledge comes great risk.
     You're name is Arnold Schwarzenegger, a new employee at a top secret russian facility where 
-    they are working on a dangerousexperiment: "Project Helios". The purpose? 
+    they are working on a dangerous experiment: "Project Helios". The purpose? 
     Harnessing quantum energy to create a virus that could take down the Americans.
     
     But suddenly something goes terribly wrong.

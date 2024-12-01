@@ -1,3 +1,8 @@
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+BLUE = "\033[34m"
+RESET = "\033[0m"
 
 class player: 
     def __init__(self, name, HP, STR, LVL):
@@ -36,9 +41,9 @@ class item:
     
     def __str__(self): 
         item_print = f"""
-**{self.name}**
-STR : {self.STR}
-HP : {self.HP}"""
+**{YELLOW}{self.name}{RESET}**
+STR : {RED}{self.STR}{RESET}
+HP : {GREEN}{self.HP}{RESET}"""
         return item_print
 
 
