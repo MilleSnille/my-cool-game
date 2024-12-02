@@ -24,16 +24,12 @@ def get_user_input():
             print("[1] Janitor \n[2] Chemist") 
             classes.my_character()
             minimeny.menu_choice() 
-            
-            
         elif menytal == "2":  
             #print(gameintro)
             gameintro.game_intro()
-
         elif menytal == "3": 
             print("Program Terminated")
             exit()
-
         else: 
             print("Choose a number; 1, 2 or 3!") 
 
