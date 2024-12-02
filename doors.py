@@ -18,7 +18,10 @@ def get_random_enemy():
         classes.enemy("ZOMBIE", 100, 5),
         classes.enemy("SCOBBY DOO", 55, 20),
         classes.enemy("DIDDY", 125, 50),
-        classes.enemy("The Terminator", 150, 75)
+        classes.enemy("The Terminator", 150, 75),
+        classes.enemy("Shrek", 120, 10),
+        classes.enemy("Leon S Kennedy", 75, 20),
+        classes.enemy("Boris Golitsyn", 60, 40)
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy

@@ -42,8 +42,8 @@ class item:
     def __str__(self): 
         item_print = f"""
 **{YELLOW}{self.name}{RESET}**
-STR : {RED}{self.STR}{RESET}
-HP : {GREEN}{self.HP}{RESET}"""
+{RED}STR: {self.STR}{RESET}
+{GREEN}HP: {self.HP}{RESET}"""
         return item_print
 
 

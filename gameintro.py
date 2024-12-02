@@ -2,7 +2,7 @@ import random as rand
 
 FAT_STYLE = "\033[1m"
 RESET = "\033[0m"
-VIT = "\033[47m"
+WHITE = "\033[47m"
 
 def print_with_delay(text):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
