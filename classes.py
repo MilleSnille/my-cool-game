@@ -21,7 +21,7 @@ class player:
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
     
     def death(self): 
-        print("YOU DIED! GAME OVER...") 
+        print("\nYOU DIED! GAME OVER...") 
         exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
 
     def game_ending(self):
@@ -53,7 +53,7 @@ selected_player = None
 
 def print_stats():
     if selected_player: 
-        print("**",selected_player.name,"**\n""HP:", selected_player.HP,"\nSTR:" ,selected_player.STR, "\nLVL:", selected_player.LVL) 
+        print(f"**{BLUE}{selected_player.name}{RESET}**\n{GREEN}HP: {selected_player.HP}{RESET}\n{RED}STR: {selected_player.STR}{RESET}\n{BLUE}LVL: {selected_player.LVL}{RESET}")
     else: 
         print("No player selected.")
 
@@ -64,17 +64,17 @@ def my_character():
         try: 
             character = int(input("---> "))
             if character == 1: 
-                print("\n*", p1.name, "*", "\nHP:", p1.HP, "\nSTRENGTH:", p1.STR, "\nLVL:", p1.LVL)
+                print(f"\n*{BLUE}{p1.name}{RESET}*\n{GREEN}HP: {p1.HP}{RESET}\n{RED}STRENGTH: {p1.STR}{RESET}\n{BLUE}LVL: {p1.LVL}{RESET} ")
                 selected_player = p1
                 break
             elif character == 2:  
-                print("\n*", p2.name, "*", "\nHP:", p2.HP, "\nSTRENGTH:", p2.STR, "\nLVL:", p2.LVL)
+                print(f"\n*{BLUE}{p2.name}{RESET}*\n{GREEN}HP: {p2.HP}{RESET}\n{RED}STRENGTH: {p2.STR}{RESET}\n{BLUE}LVL: {p2.LVL}{RESET} ")
                 selected_player = p2
                 break
             else: 
-                print("Invalid choice! Please choose; 1 or 2\n")
+                print("\nInvalid choice! Please choose; 1 or 2\n")
         except ValueError:
-            print("Invalid input! Please choose; 1 or 2\n") 
+            print("\nInvalid input! Please choose; 1 or 2\n") 
 
 
 class enemy: 
@@ -85,7 +85,7 @@ class enemy:
 
     def __str__(self): 
         enemy_print = f"""
-**{self.name}**
-STR : {self.STR}
-HP : {self.HP}"""
+**{RED}{self.name}{RESET}**
+{YELLOW}STR : {self.STR}{RESET}
+{GREEN}HP : {self.HP}{RESET}"""
         return enemy_print

@@ -19,7 +19,7 @@ def print_with_delay(text):
 def game_intro():
     """Prints the backstory for the game."""
     intro_text = """
-    *** President Evil ***
+    *** Project Helios ***
 
     The year is 1984. Science has reached unimaginable heights, but with great knowledge comes great risk.
     You're name is Arnold Schwarzenegger, a new employee at a top secret russian facility where 
@@ -45,7 +45,14 @@ def game_intro():
 #game_intro()
 
 def game_outro():
-    outro_text = """Victory Achieved
+    victory_text = """ 
+
+ __   __   __     ______     ______   ______     ______     __  __  
+/\ \ / /  /\ \   /\  ___\   /\__  _\ /\  __ \   /\  == \   /\ \_\ \   
+\ \ \' /   \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
+ \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
+  \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ """
+    outro_text= """                                                                      
 You escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
 "Schwarzenegger, you saved us all. Rest now, but stay ready."
 
@@ -53,5 +60,6 @@ The world is safe... For now.
 
 Game Complete!
 Thank you for playing."""
+    print(victory_text)
     print_with_delay(outro_text)
  

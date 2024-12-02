@@ -16,7 +16,7 @@ def menu_choice():
                 doors.door_choice() 
             elif choice == 4: 
                 print("PROGRAM TERMINATED")
-                exit()  #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
+                exit()  #<-- denna funktion gör så att spelet avslutas genom "exit()"
             else: 
                 print("Invalid choice, please choose number 1, 2 or 3") 
         except ValueError: 
