@@ -3,6 +3,7 @@ import random as rand
 FAT_STYLE = "\033[1m"
 RESET = "\033[0m"
 WHITE = "\033[47m"
+YELLOW = "\033[33m"
 
 def print_with_delay(text):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
@@ -45,13 +46,13 @@ def game_intro():
 #game_intro()
 
 def game_outro():
-    victory_text = """ 
+    victory_text = rf"""{YELLOW}
 
  __   __   __     ______     ______   ______     ______     __  __  
 /\ \ / /  /\ \   /\  ___\   /\__  _\ /\  __ \   /\  == \   /\ \_\ \   
 \ \ \' /   \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
  \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
-  \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ """
+  \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ {RESET}"""
     outro_text= """                                                                      
 You escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
 "Schwarzenegger, you saved us all. Rest now, but stay ready."

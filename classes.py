@@ -1,7 +1,9 @@
 RED = "\033[31m"
+dark_red = "\033[38;2;139;0;0m"
 GREEN = "\033[32m"
 YELLOW = "\033[33m"
 BLUE = "\033[34m"
+light_blue = "\033[38;2;173;216;230m"
 RESET = "\033[0m"
 
 class player: 
@@ -53,7 +55,7 @@ selected_player = None
 
 def print_stats():
     if selected_player: 
-        print(f"**{BLUE}{selected_player.name}{RESET}**\n{GREEN}HP: {selected_player.HP}{RESET}\n{RED}STR: {selected_player.STR}{RESET}\n{BLUE}LVL: {selected_player.LVL}{RESET}")
+        print(f"**{light_blue}{selected_player.name}{RESET}**\n{GREEN}HP: {selected_player.HP}{RESET}\n{RED}STR: {selected_player.STR}{RESET}\n{BLUE}LVL: {selected_player.LVL}{RESET}")
     else: 
         print("No player selected.")
 
@@ -64,11 +66,11 @@ def my_character():
         try: 
             character = int(input("---> "))
             if character == 1: 
-                print(f"\n*{BLUE}{p1.name}{RESET}*\n{GREEN}HP: {p1.HP}{RESET}\n{RED}STRENGTH: {p1.STR}{RESET}\n{BLUE}LVL: {p1.LVL}{RESET} ")
+                print(f"\n*{light_blue}{p1.name}{RESET}*\n{GREEN}HP: {p1.HP}{RESET}\n{RED}STRENGTH: {p1.STR}{RESET}\n{BLUE}LVL: {p1.LVL}{RESET} ")
                 selected_player = p1
                 break
             elif character == 2:  
-                print(f"\n*{BLUE}{p2.name}{RESET}*\n{GREEN}HP: {p2.HP}{RESET}\n{RED}STRENGTH: {p2.STR}{RESET}\n{BLUE}LVL: {p2.LVL}{RESET} ")
+                print(f"\n*{light_blue}{p2.name}{RESET}*\n{GREEN}HP: {p2.HP}{RESET}\n{RED}STRENGTH: {p2.STR}{RESET}\n{BLUE}LVL: {p2.LVL}{RESET} ")
                 selected_player = p2
                 break
             else: 
@@ -85,7 +87,7 @@ class enemy:
 
     def __str__(self): 
         enemy_print = f"""
-**{RED}{self.name}{RESET}**
-{YELLOW}STR : {self.STR}{RESET}
+**{dark_red}{self.name}{RESET}**
+{RED}STR : {self.STR}{RESET}
 {GREEN}HP : {self.HP}{RESET}"""
         return enemy_print
