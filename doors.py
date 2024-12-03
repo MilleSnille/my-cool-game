@@ -38,8 +38,9 @@ def enemy_encounter():
             if classes.selected_player.HP / random_enemy.STR < random_enemy.HP / classes.selected_player.STR: 
                 # classes.p1.HP -= enemy_hp_damage
                 # classes.p2.HP -= enemy_hp_damage
-                classes.selected_player.take_damage(enemy_hp_damage)
                 print(f"{dark_red}{random_enemy.name}{RESET} was stronger than you! You lost {enemy_hp_damage} HP.")
+                classes.selected_player.take_damage(enemy_hp_damage)
+                
                 break
             elif classes.selected_player.HP / random_enemy.STR > random_enemy.HP / classes.selected_player.STR: 
                 print(f"Congratulations! You were stronger than {dark_red}{random_enemy.name}{RESET}")
