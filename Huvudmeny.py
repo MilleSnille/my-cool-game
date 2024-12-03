@@ -2,6 +2,7 @@ import classes
 import minimeny 
 import gameintro
 
+RED = "\033[31m"
 ORANGE = "\033[38;2;255;165;0m"
 RESET = "\033[0m"
 

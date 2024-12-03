@@ -1,3 +1,4 @@
+
 RED = "\033[31m"
 dark_red = "\033[38;2;139;0;0m"
 GREEN = "\033[32m"
@@ -5,6 +6,14 @@ YELLOW = "\033[33m"
 BLUE = "\033[34m"
 light_blue = "\033[38;2;173;216;230m"
 RESET = "\033[0m"
+game_over = rf"""{RED}
+ ______     ______     __    __     ______        ______     __   __   ______     ______    
+/\  ___\   /\  __ \   /\ "-./  \   /\  ___\      /\  __ \   /\ \ / /  /\  ___\   /\  == \   
+\ \ \__ \  \ \  __ \  \ \ \-./\ \  \ \  __\      \ \ \/\ \  \ \ \'/   \ \  __\   \ \  __<   
+ \ \_____\  \ \_\ \_\  \ \_\ \ \_\  \ \_____\     \ \_____\  \ \__|    \ \_____\  \ \_\ \_\ 
+  \/_____/   \/_/\/_/   \/_/  \/_/   \/_____/      \/_____/   \/_/      \/_____/   \/_/ /_/ 
+                                                                                            {RESET}"""
+
 
 class player: 
     def __init__(self, name, HP, STR, LVL):
@@ -23,7 +32,7 @@ class player:
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
     
     def death(self): 
-        print("\nYOU DIED! GAME OVER...") 
+        print(game_over) 
         exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
 
     def game_ending(self):
