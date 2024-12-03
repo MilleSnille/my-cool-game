@@ -18,9 +18,9 @@ def menu_choice():
                 print("PROGRAM TERMINATED")
                 exit()  #<-- denna funktion gör så att spelet avslutas genom "exit()"
             else: 
-                print("Invalid choice, please choose number 1, 2 or 3") 
+                print("Invalid choice, please choose number 1, 2, 3 or 4") 
         except ValueError: 
-            print("Invalid choice, please choose number 1, 2 or 3")
+            print("Invalid choice, please choose number 1, 2, 3 or 4")
 
 
 

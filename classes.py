@@ -26,8 +26,8 @@ class player:
      
     def take_damage(self, damage):
         self.HP -= damage
-        if self.HP < 0:  # Säkerställer att HP inte går under 0
-            self.HP = 0
+        if self.HP <= 0:  # Säkerställer att HP inte går under 0
+            #self.HP = 0
             self.death() #<-- här aktiveras funktionen "death" i funktionen "take damage". 
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
     

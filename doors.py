@@ -57,10 +57,12 @@ def enemy_encounter():
             break
         elif flee_or_fight == "3" or flee_or_fight == "stats" or flee_or_fight == "s":
             classes.print_stats()
-            continue
+            continue 
+        else: 
+            print("Invalid choice. you have to choose 1, 2 or 3!")
+
             
-
-
+ 
 
 def get_random_chest_item():
     global random_item
@@ -118,7 +120,7 @@ def add_random_item():
                 classes.p2.HP += random_item.HP
                 # classes.p1.LVL += 1 
                 # classes.p2.LVL += 1
-                print(f"You leveled up to{BLUE} LVL:{classes.selected_player.LVL}{RESET}")
+                #print(f"You leveled up to{BLUE} LVL:{classes.selected_player.LVL}{RESET}")
                 classes.selected_player.game_ending() 
                 break
             elif C == "N" or C == "n": 

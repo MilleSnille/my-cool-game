@@ -5,12 +5,11 @@ RESET = "\033[0m"
 WHITE = "\033[47m"
 YELLOW = "\033[33m"
 
-def print_with_delay(text):
+def print_with_delay(text,delay):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
     import sys
     import time
     for char in text:
-        delay = rand.uniform(0.01, 0.15)
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
@@ -40,7 +39,7 @@ def game_intro():
 
     Good luck, Schwarzenegger. Earth is counting on you to save it... 
     """
-    print_with_delay(intro_text)
+    print_with_delay(intro_text,0.05)
 
 # Kör backstory-funktionen när spelet startar
 #game_intro()
@@ -50,11 +49,11 @@ def game_outro():
 
  __   __   __     ______     ______   ______     ______     __  __  
 /\ \ / /  /\ \   /\  ___\   /\__  _\ /\  __ \   /\  == \   /\ \_\ \   
-\ \ \' /   \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
+\ \ \' /  \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
  \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
   \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ {RESET}"""
     outro_text= """                                                                      
-You escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
+\nYou escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
 "Schwarzenegger, you saved us all. Rest now, but stay ready."
 
 The world is safe... For now.
@@ -62,5 +61,5 @@ The world is safe... For now.
 Game Complete!
 Thank you for playing."""
     print(victory_text)
-    print_with_delay(outro_text)
+    print_with_delay(outro_text,0.1)
  

@@ -17,8 +17,9 @@ project_helios_text= rf"""{ORANGE}
 
 
 def get_user_input():
+    print(project_helios_text)
     while True:
-        menytal = input(f"{project_helios_text}\n[1] START\n[2] INTRO\n[3] EXIT\n") 
+        menytal = input("\n[1] START\n[2] INTRO\n[3] EXIT\n") 
         
         if menytal == "1": 
             print("PICK A CHARACTER")
