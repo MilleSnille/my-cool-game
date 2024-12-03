@@ -40,7 +40,6 @@ def enemy_encounter():
                 # classes.p2.HP -= enemy_hp_damage
                 print(f"{dark_red}{random_enemy.name}{RESET} was stronger than you! You lost {enemy_hp_damage} HP.")
                 classes.selected_player.take_damage(enemy_hp_damage)
-                
                 break
             elif classes.selected_player.HP / random_enemy.STR > random_enemy.HP / classes.selected_player.STR: 
                 print(f"Congratulations! You were stronger than {dark_red}{random_enemy.name}{RESET}")
@@ -60,6 +59,7 @@ def enemy_encounter():
             continue 
         else: 
             print("Invalid choice. you have to choose 1, 2 or 3!")
+            continue
 
             
  
@@ -73,7 +73,7 @@ def get_random_chest_item():
         classes.item("Glass Shard", 12, 0),
         classes.item("Energy Sword", 25, 0),
         classes.item("Flame Thrower", 20, 0),
-        classes.item("Estus Flask", 0, 100)
+        classes.item("Estus Flask", 0, 50)
     ]
     random_item = rand.choice(chest_items)
     return random_item
