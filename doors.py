@@ -118,7 +118,7 @@ def add_random_item(): # bestämmer vad som händer när spelaren hittar ett fö
                 # låter spelaren byta ut ett föremål i listan inv
                 choice = input("\nDo you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the item.\n")
                 if choice.lower() == "n": 
-                    print("\nYou left the item behind.")
+                    print("You left the item behind.")
                     return
                 else: 
                     try: 

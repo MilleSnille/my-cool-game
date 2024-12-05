@@ -38,7 +38,7 @@ class player:
 
     # funktion som avslutar spelet när spelarens level blir 10
     def game_ending(self):
-        if self.LVL == 10:
+        if self.LVL == 2:
             import gameintro
             gameintro.game_outro()
             exit()

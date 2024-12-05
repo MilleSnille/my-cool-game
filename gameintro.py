@@ -1,5 +1,6 @@
 import random as rand
-
+import sys
+import time
 
 #olika fräg koder som kan fräga texten efter prompten
 FAT_STYLE = "\033[1m"
@@ -9,13 +10,24 @@ YELLOW = "\033[33m"
 
 def print_with_delay(text,delay):
     """Skriver text med en kort fördröjning mellan varje tecken för dramatisk effekt."""
-    import sys
-    import time
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
     print()  # Ny rad efter texten
+
+def Clear_screen():
+    sys.stdout.write("\033c")
+    sys.stdout.flush()
+
+def blink_logo(text, delay=0.8, times=5):
+    for _ in range (times):
+        print(text, end='', flush=True)
+        time.sleep(delay)
+
+        Clear_screen()
+        time.sleep(delay)
+        
 
 def game_intro():
     """Prints the backstory for the game."""
@@ -45,6 +57,8 @@ def game_intro():
 # Kör backstory-funktionen när spelet startar
 #game_intro()
 
+
+
 def game_outro():
     victory_text = rf"""{YELLOW}
 
@@ -61,6 +75,7 @@ The world is safe... For now.
 
 Game Complete!
 Thank you for playing."""
+    blink_logo(victory_text, delay = 0.5, times = 3)
     print(victory_text)
-    print_with_delay(outro_text,0.1)
+    print_with_delay(outro_text,0.05)
  
