@@ -83,6 +83,19 @@ def get_random_chest_item():
 def add_random_item(): 
     global random_item
     while True:
+        if random_item.name == "Estus Flask":
+            while True:
+                answer = input(f"Do you want to consume the {YELLOW}Estus Flask{RESET}? [Y] to consume or [N] to leave it behind\n")
+                if answer.lower() in ["n", "no"]:
+                    print("You left the Estus Flask behind...\n")
+                    return  
+                elif answer.lower() in ["y", "yes"]:
+                    print(f"You slurped up all the {YELLOW}Estus Juice{RESET}, then threw it away!")
+                    classes.p1.HP += random_item.HP
+                    classes.p2.HP += random_item.HP
+                    return  
+                else:
+                    print("Invalid choice. Please enter [Y] or [N].")
         if len(inventory.inv) >= 5: # kontrollerar om listan inv innehåller 5 items  
             print("\nYour inventory is full. You must replace an item to equip this one.")
             print("Current inventory:")
@@ -92,7 +105,7 @@ def add_random_item():
                 print(f"{index}. {YELLOW}{item.name}{RESET} ({RED}STR: {item.STR}{RESET}, {GREEN}HP:{item.HP}{RESET})") 
                 index += 1
             print(f"\nThe chest contains: {random_item.name} (STR: {random_item.STR}, HP: {random_item.HP} ")
-
+            
             while True: 
                 choice = input("\nDo you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the item.\n")
                 if choice.lower() == "n": 
@@ -108,9 +121,7 @@ def add_random_item():
                             inventory.inv[choice] = random_item # byter ut det item du har valt till chest item
                             classes.p1.STR += random_item.STR
                             classes.p2.STR += random_item.STR
-                            classes.p1.HP += random_item.HP
-                            classes.p2.HP += random_item.HP
-                            #Lägger till den styrka/ HP som ett item har till spelarens totala och funktionen take_damage är här så man kan dö om man tar bort estus_flask och hamnar under 0 HP .
+                            #Lägger till den styrka som ett item har till spelarens totala och funktionen take_damage är här så man kan dö om man tar bort estus_flask och hamnar under 0 HP .
                             return
                         else: 
                             print("Invalid input. You have to choose a number within your inventory, [1] - [5]")
@@ -120,20 +131,12 @@ def add_random_item():
         else: 
             C = input("Do you want to take this item with you? [Y] or [N]\n")
             if C == "Y" or C == "y": 
-                if random_item.name == "Estus Flask": 
-                    print(f"You slurped up all the {YELLOW}Estus Juice{RESET}, then threw it away!")
-                    classes.p1.HP += random_item.HP
-                    classes.p2.HP += random_item.HP
-                    break
-                else:
                     print("You picked up the item!")
                     inventory.inv.append(random_item)
                     classes.p1.STR += random_item.STR
                     classes.p2.STR += random_item.STR
-                    classes.p1.HP += random_item.HP
-                    classes.p2.HP += random_item.HP
                     break
-               
+            
             elif C == "N" or C == "n": 
                 print("You leave the item behind and journey forth")
                 break
