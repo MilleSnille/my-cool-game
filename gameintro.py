@@ -1,5 +1,7 @@
 import random as rand
 
+
+#olika fräg koder som kan fräga texten efter prompten
 FAT_STYLE = "\033[1m"
 RESET = "\033[0m"
 WHITE = "\033[47m"
@@ -14,7 +16,6 @@ def print_with_delay(text,delay):
         sys.stdout.flush()
         time.sleep(delay)
     print()  # Ny rad efter texten
-
 
 def game_intro():
     """Prints the backstory for the game."""

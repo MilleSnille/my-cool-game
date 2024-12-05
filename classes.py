@@ -31,8 +31,8 @@ class player:
             self.death() #<-- här aktiveras funktionen "death" i funktionen "take damage". 
         print(f"{self.name} took {damage} damage! Current HP: {self.HP}") 
     
-    def death(self): 
-        print(game_over) 
+    def death(self):
+        print(f"{RED}You died{RESET}\n",game_over) 
         exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
 
     def game_ending(self):
