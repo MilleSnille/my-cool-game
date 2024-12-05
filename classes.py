@@ -23,7 +23,7 @@ class player:
         self.HP = HP
         self.STR = STR
         self.LVL = LVL
-
+#self refererar till det aktuella objektet/ playern som skapas eller används, där self gör att man kan ha flera med samma atributer (HP, STR).
      
     def take_damage(self, damage): # funktion som hanterar skadan spelaren tar från traps eller monster. Anropas i filen "doors"
         self.HP -= damage
@@ -42,9 +42,12 @@ class player:
             import gameintro
             gameintro.game_outro()
             exit()
-        
 
-    
+p1 = player("Janitor", 150, 15, 1)
+p2 = player("Chemist", 100, 25 ,1) 
+selected_player = None
+# skapar två olika spelare (spelarklassen) med olika atributer
+
 # skapar en klass för egenskaperna föremålen ska ha
 class item:
     def __init__ (self, name, STR, HP):  
@@ -59,10 +62,8 @@ class item:
 {GREEN}HP: {self.HP}{RESET}"""
         return item_print
 
-# skapar två olika spelare (spelarklassen)
-p1 = player("Janitor", 150, 15, 1)
-p2 = player("Chemist", 100, 25 ,1) 
-selected_player = None
+
+
 
 def print_stats():
     if selected_player: 
@@ -88,6 +89,7 @@ def my_character():
                 print("\nInvalid choice! Please choose; 1 or 2\n")
         except ValueError:
             print("\nInvalid input! Please choose; 1 or 2\n") 
+#global gör så att den inte skapar en ny variabel med samma namn utan kan då byta dess värde genom flera funktioner
 
 # klassen för monsters egenskaper
 class enemy: 
