@@ -10,7 +10,7 @@ def inventory():
         print("\nYOUR INVENTORY:")
         for item in inv: 
             print(item)
-            time.sleep(0.8)
+            time.sleep(0.8) # printar alla föremål i inventoryt med en delay mellan 
     
         
 

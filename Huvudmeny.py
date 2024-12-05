@@ -2,6 +2,7 @@ import classes
 import minimeny 
 import gameintro
 
+# färger som används
 RED = "\033[31m"
 ORANGE = "\033[38;2;255;165;0m"
 RESET = "\033[0m"
@@ -19,6 +20,7 @@ project_helios_text= rf"""{ORANGE}
 def get_user_input():
     print(project_helios_text)
     while True:
+        # spelaren får välja mellan olika menyval
         menytal = input("\n[1] START\n[2] INTRO\n[3] EXIT\n") 
         
         if menytal == "1": 
@@ -27,13 +29,12 @@ def get_user_input():
             classes.my_character()
             minimeny.menu_choice() 
         elif menytal == "2":  
-            #print(gameintro)
             gameintro.game_intro()
         elif menytal == "3": 
             print("Program Terminated")
             exit()
         else: 
-            print("Choose a number; 1, 2 or 3!") 
+            print("Choose a number; 1, 2 or 3!") # felmeddelande och en ny chans att välja
 
 
 get_user_input() 

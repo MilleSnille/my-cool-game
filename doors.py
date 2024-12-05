@@ -2,6 +2,7 @@ import classes
 import random as rand
 import inventory
 
+# skapar textfärger
 RED = "\033[31m"
 dark_red = "\033[38;2;139;0;0m"
 GREEN = "\033[32m"
@@ -10,10 +11,11 @@ BLUE = "\033[34m"
 RESET = "\033[0m"
 # Olika färger man kan ha på text i terminalen
 
+# alternativ som kan väljas när spelaren öppnar en dörr
 door_alternatives = ["infested room", "burning room", "Monster", "Chest" ] 
-# chosen_alternative = random.choice(door_alternatives) 
+ 
 
-def get_random_enemy(): 
+def get_random_enemy(): #returnerar ett slumpmässigt monster från en lista
     global random_enemy
     enemy_types = [
         classes.enemy("ZOMBIE", 100, 5),
@@ -28,21 +30,21 @@ def get_random_enemy():
     return random_enemy
     
 
-def enemy_encounter(): 
+def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när man möter ett monster
     global random_enemy
     print(f"You encounter {get_random_enemy()}")
     while True:
         flee_or_fight = input(f"\nYou've still got time to Flee! But remember, if you don't fight {random_enemy.name}, you might not get out of here!\n[1]Fight\n[2]Flee\n[3]Statistics\n") 
         if flee_or_fight == "1" or flee_or_fight == "Fight" or flee_or_fight == "fight": 
             enemy_hp_damage = rand.randint(10,20)
+            # jämför spelarens styrka och HP mot monstrets
             if classes.selected_player.HP / random_enemy.STR < random_enemy.HP / classes.selected_player.STR: 
-                # classes.p1.HP -= enemy_hp_damage
-                # classes.p2.HP -= enemy_hp_damage
                 print(f"{dark_red}{random_enemy.name}{RESET} was stronger than you! You lost {enemy_hp_damage} HP.")
                 classes.selected_player.take_damage(enemy_hp_damage)
                 break
             elif classes.selected_player.HP / random_enemy.STR > random_enemy.HP / classes.selected_player.STR: 
                 print(f"Congratulations! You were stronger than {dark_red}{random_enemy.name}{RESET}")
+                # öka spelarens level vid vinst
                 classes.p1.LVL += 1
                 classes.p2.LVL += 1
                 print(f"You defeated the monster and leveled up to {BLUE}LVL:{classes.selected_player.LVL}{RESET}")
@@ -52,19 +54,21 @@ def enemy_encounter():
                 print(f"You and {dark_red}{random_enemy.name}{RESET} were evenly strong. {dark_red}{random_enemy.name}{RESET} fled!")
                 break
         elif flee_or_fight == "2" or flee_or_fight =="Flee" or flee_or_fight == "flee":  
+            # om spelaren flyr avslutas striden
             print(f"You escaped {dark_red}{random_enemy.name}{RESET}")
             break
         elif flee_or_fight == "3" or flee_or_fight == "stats" or flee_or_fight == "s":
             classes.print_stats()
-            continue 
+            continue # startar om loopen för att visa alternativen igen
         else: 
+            # felhantering vid fel inmatning
             print("Invalid choice. you have to choose 1, 2 or 3!")
             continue
-#continue gör så att den går tillbaks och köra functionen igen, så man får välja om
+#continue gör så att den går tillbaks och kör funktionen igen, så man får välja en gång till 
             
  
 
-def get_random_chest_item():
+def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista 
     global random_item
     chest_items = [
         classes.item("Dissecting Set", 10, 0),
@@ -80,17 +84,19 @@ def get_random_chest_item():
     return random_item
     #som sedan returneras så att random_item får ett nytt temporärt värde
 
-def add_random_item(): 
+def add_random_item(): # bestämmer vad som händer när spelaren hittar ett föremål i en kista
     global random_item
     while True:
-        if random_item.name == "Estus Flask":
+        if random_item.name == "Estus Flask": 
+            # vad som specifikt händer om föremålet är Estus Flask
             while True:
                 answer = input(f"Do you want to consume the {YELLOW}Estus Flask{RESET}? [Y] to consume or [N] to leave it behind\n")
                 if answer.lower() in ["n", "no"]:
                     print("You left the Estus Flask behind...\n")
-                    return  
+                    return        # avslutar funktionen 
                 elif answer.lower() in ["y", "yes"]:
                     print(f"You slurped up all the {YELLOW}Estus Juice{RESET}, then threw it away!")
+                    # lägger till HP till spelaren
                     classes.p1.HP += random_item.HP
                     classes.p2.HP += random_item.HP
                     return  
@@ -107,6 +113,7 @@ def add_random_item():
             print(f"\nThe chest contains: {random_item.name} (STR: {random_item.STR}, HP: {random_item.HP} ")
             
             while True: 
+                # låter spelaren byta ut ett föremål i listan inv
                 choice = input("\nDo you want to replace an item? Enter the number of the item you want to replace, or press [N] to leave the item.\n")
                 if choice.lower() == "n": 
                     print("\nYou left the item behind.")
@@ -121,7 +128,7 @@ def add_random_item():
                             inventory.inv[choice] = random_item # byter ut det item du har valt till chest item
                             classes.p1.STR += random_item.STR
                             classes.p2.STR += random_item.STR
-                            #Lägger till den styrka som ett item har till spelarens totala och funktionen take_damage är här så man kan dö om man tar bort estus_flask och hamnar under 0 HP .
+                            #Lägger till den styrka som ett item har till spelarens totala, och funktionen take_damage är här så att man kan dö om man tar bort estus_flask och hamnar under 0 HP .
                             return
                         else: 
                             print("Invalid input. You have to choose a number within your inventory, [1] - [5]")
@@ -129,6 +136,7 @@ def add_random_item():
                     except ValueError:
                         print("Invalid input. You have to choose a number within your inventory, [1] - [5]")
         else: 
+            # om inventoryt inte är fullt kan föremålet läggas till direkt
             C = input("Do you want to take this item with you? [Y] or [N]\n")
             if C == "Y" or C == "y": 
                     print("You picked up the item!")
@@ -145,7 +153,7 @@ def add_random_item():
                 continue
 
 
-def door_choice(): 
+def door_choice(): # låter spelaren välja en dörr och bestämmer vad som finns bakom den
     global door_alternatives
     chosen_alternative = None #<-- detta ger den ett standardvärde vilket gör så att även om spelaren skriver in annat än "1, 2 eller 3" så kraschar inte spelet.
 

@@ -1,4 +1,5 @@
 
+# Färger som används
 RED = "\033[31m"
 dark_red = "\033[38;2;139;0;0m"
 GREEN = "\033[32m"
@@ -6,6 +7,7 @@ YELLOW = "\033[33m"
 BLUE = "\033[34m"
 light_blue = "\033[38;2;173;216;230m"
 RESET = "\033[0m"
+# ascii text som visas när spelaren förlorar
 game_over = rf"""{RED}
  ______     ______     __    __     ______        ______     __   __   ______     ______    
 /\  ___\   /\  __ \   /\ "-./  \   /\  ___\      /\  __ \   /\ \ / /  /\  ___\   /\  == \   
@@ -14,17 +16,16 @@ game_over = rf"""{RED}
   \/_____/   \/_/\/_/   \/_/  \/_/   \/_____/      \/_____/   \/_/      \/_____/   \/_/ /_/ 
                                                                                             {RESET}"""
 
-
+# klassen player som bestämmer spelarens egenskaper
 class player: 
     def __init__(self, name, HP, STR, LVL):
         self.name = name
         self.HP = HP
         self.STR = STR
-        self.inventory = []
         self.LVL = LVL
 
      
-    def take_damage(self, damage):
+    def take_damage(self, damage): # funktion som hanterar skadan spelaren tar från traps eller monster. Anropas i filen "doors"
         self.HP -= damage
         if self.HP <= 0:  # Säkerställer att HP inte går under 0
             #self.HP = 0
@@ -33,8 +34,9 @@ class player:
     
     def death(self):
         print(f"{RED}You died{RESET}\n",game_over) 
-        exit()   #<-- denna funktion gör så att när HP blir 0>= så kommer spelet att avslutas genom "exit()"
+        exit()   #<-- denna funktion gör så att spelet avslutas genom "exit()". Anropas i take_damage
 
+    # funktion som avslutar spelet när spelarens level blir 10
     def game_ending(self):
         if self.LVL == 10:
             import gameintro
@@ -43,13 +45,13 @@ class player:
         
 
     
-    
+# skapar en klass för egenskaperna föremålen ska ha
 class item:
     def __init__ (self, name, STR, HP):  
         self.name = name
         self.STR = STR
         self.HP = HP
-    
+# funktion som används för att returnera en sträng för objektet
     def __str__(self): 
         item_print = f"""
 **{YELLOW}{self.name}{RESET}**
@@ -57,7 +59,7 @@ class item:
 {GREEN}HP: {self.HP}{RESET}"""
         return item_print
 
-
+# skapar två olika spelare (spelarklassen)
 p1 = player("Janitor", 150, 15, 1)
 p2 = player("Chemist", 100, 25 ,1) 
 selected_player = None
@@ -68,7 +70,7 @@ def print_stats():
     else: 
         print("No player selected.")
 
-
+# funktionen som hanterar vilken spelare som väljs. Anropas i filen "huvudmeny"
 def my_character():
     global selected_player
     while True:
@@ -87,7 +89,7 @@ def my_character():
         except ValueError:
             print("\nInvalid input! Please choose; 1 or 2\n") 
 
-
+# klassen för monsters egenskaper
 class enemy: 
     def __init__(self, name, HP, STR):
         self.name = name

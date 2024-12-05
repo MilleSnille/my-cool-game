@@ -7,6 +7,7 @@ def menu_choice():
     
     while True: 
         try: 
+            # Här får spelaren välja mellan olika menyval. 
             choice =int(input("\nChoose one of the 3 below\n[1] STATISTICS\n[2] LOOK AT YOUR INVENTORY\n[3] PICK A DOOR\n[4] EXIT GAME\n")) 
             if choice == 1: 
                 classes.print_stats()
