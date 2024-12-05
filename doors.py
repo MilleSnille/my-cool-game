@@ -60,7 +60,7 @@ def enemy_encounter():
         else: 
             print("Invalid choice. you have to choose 1, 2 or 3!")
             continue
-
+#continue gör så att den går tillbaks och köra functionen igen, så man får välja om
             
  
 
@@ -75,8 +75,10 @@ def get_random_chest_item():
         classes.item("Flame Thrower", 20, 0),
         classes.item("Estus Flask", 0, 50)
     ]
+    #lista med items man kan få ur en chest
     random_item = rand.choice(chest_items)
     return random_item
+    #som sedan returneras så att get_random_chest_item får ett nytt temporärt värde
 
 def add_random_item(): 
     global random_item
