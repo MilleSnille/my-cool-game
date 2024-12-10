@@ -1,6 +1,8 @@
 import classes 
 import random as rand
 import inventory
+from gameintro import game_outro_escape
+from gameintro import game_outro_kill
 
 # skapar textfärger (ANSI)
 BLINK = "\033[5m"
@@ -12,6 +14,7 @@ BLUE = "\033[34m"
 RESET = "\033[0m"
 # Olika färger man kan ha på text i terminalen
 
+
 # alternativ som kan väljas när spelaren öppnar en dörr
 door_alternatives = ["infested room", "burning room", "Monster", "Chest" ] 
  
@@ -22,14 +25,31 @@ def get_random_enemy(): #returnerar ett slumpmässigt monster från en lista
         classes.enemy("ZOMBIE", 100, 5),
         classes.enemy("SCOBBY DOO", 55, 20),
         classes.enemy("DIDDY", 125, 50),
-        classes.enemy("The Terminator", 150, 75),
+        classes.enemy("The Terminator", 130, 70),
         classes.enemy("Shrek", 120, 10),
         classes.enemy("Leon S Kennedy", 75, 20),
         classes.enemy("Boris Golitsyn", 60, 40)
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy
+
+
+def get_random_boss(): #returnerar ett slumpmässigt boss från en lista
+    global random_boss
+    boss_types = [
+        classes.boss("P.DIDDY EXTREME", 175, 55),
+        classes.boss("The Destoryer", 150, 80),
+    ]
+    random_boss = rand.choice(boss_types)
+    return random_boss
     
+def game_ending(self):
+    while True:
+        if self.LVL == 10 or self.LVL > 10:
+            print(f"You reached {BLUE}LVL: 10{RESET}")
+            boss_encounter()
+        else:
+            break
 
 def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när man möter ett monster
     global random_enemy
@@ -49,7 +69,8 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
                 classes.p1.LVL += 1
                 classes.p2.LVL += 1
                 print(f"You defeated the monster and leveled up to {BLUE}LVL:{classes.selected_player.LVL}{RESET}")
-                classes.selected_player.game_ending()
+                game_ending()
+                # classes.selected_player.game_ending()
                 break
             else: 
                 print(f"You and {dark_red}{random_enemy.name}{RESET} were evenly strong. {dark_red}{random_enemy.name}{RESET} fled!")
@@ -66,8 +87,39 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
             print("Invalid choice. you have to choose 1, 2 or 3!")
             continue
 #continue gör så att den går tillbaks och kör funktionen igen, så man får välja en gång till 
-            
- 
+
+
+def boss_encounter():
+    global random_boss
+    print(f"The room begins to shake and {RED}{random_boss}{RESET} appers")
+    while True:
+        action = input(f"{RED}{random_boss}{RESET} is faster than you, so your forced to fight!\n [1]Fight\n [2] Try to escape\n [3] Stats\n")
+        if action.lower() == "fight" or action == "1":
+            boss_damage = 1000
+            if classes.selected_player.HP / random_boss.STR < random_boss.HP / classes.selected_player.STR: 
+                print(f"{RED}{random_boss.name}{RESET} was stronger than you! You lost {boss_damage} HP.")
+                classes.selected_player.take_damage(boss_damage)
+                break
+            elif classes.selected_player.HP / random_boss.STR >= random_boss.HP / classes.selected_player.STR: 
+                print(f"Congratulations! You were stronger than {RED}{random_boss.name}{RESET}")
+                print(f"You defeated {RED}{random_boss.name}{RESET}")
+                game_outro_kill()
+        if action.lower() == "escape" or action == "2":
+            random_number = rand.randint(1, 5)
+            if random_number == 5:
+                game_outro_escape()
+            elif random_number == 1 or random_number == 2 or random_number == 3 or random_number == 4: 
+                print(f"You got swatted by {RED}{random_boss}{RESET} and took {boss_damage}")
+                classes.selected_player.take_damage(boss_damage)
+        elif action.lower == "stats" or action == "3": 
+                classes.print_stats()
+                continue
+        else: 
+            print("Invadid input. Choose an option; [1], [2] or [3]")
+            continue
+
+
+
 
 def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista 
     global random_item
@@ -78,7 +130,8 @@ def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista
         classes.item("Glass Shard", 12, 0),
         classes.item("Energy Sword", 25, 0),
         classes.item("Flame Thrower", 20, 0),
-        classes.item("Estus Flask", 0, 50)
+        classes.item("Estus Flask", 0, 50),
+        classes.item("Diddy Oil", 0, 25)
     ]
     #lista med items man kan få ur en chest
     random_item = rand.choice(chest_items)
@@ -89,15 +142,15 @@ def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista
 def add_random_item(): # bestämmer vad som händer när spelaren hittar ett föremål i en kista
     global random_item
     while True:
-        if random_item.name == "Estus Flask": 
+        if random_item.name == "Estus Flask" or random_item.name == "Diddy Oil": 
             # vad som specifikt händer om föremålet är Estus Flask
             while True:
-                answer = input(f"Do you want to consume the {YELLOW}Estus Flask{RESET}? [Y] to consume or [N] to leave it behind\n")
+                answer = input(f"Do you want to consume the {YELLOW}{random_item.name}{RESET}? [Y] to consume or [N] to leave it behind\n")
                 if answer.lower() in ["n", "no"]:
-                    print("You left the Estus Flask behind...\n")
+                    print(f"You left the {random_item.name} behind...\n")
                     return        # avslutar funktionen 
                 elif answer.lower() in ["y", "yes"]:
-                    print(f"You slurped up all the {YELLOW}Estus Juice{RESET}, then threw it away!")
+                    print(f"You slurped up all the juice from the {YELLOW}{random_item.name}{RESET}, then threw it away!")
                     # lägger till HP till spelaren
                     classes.p1.HP += random_item.HP
                     classes.p2.HP += random_item.HP

@@ -37,11 +37,7 @@ class player:
         exit()   #<-- denna funktion gör så att spelet avslutas genom "exit()". Anropas i take_damage
 
     # funktion som avslutar spelet när spelarens level blir 10
-    def game_ending(self):
-        if self.LVL == 10:
-            import gameintro
-            gameintro.game_outro()
-            exit()
+    
 
 p1 = player("Janitor", 150, 15, 1)
 p2 = player("Chemist", 100, 25 ,1) 
@@ -104,3 +100,17 @@ class enemy:
 {RED}STR : {self.STR}{RESET}
 {GREEN}HP : {self.HP}{RESET}"""
         return enemy_print
+    
+
+class boss: 
+    def __init__(self, name, HP, STR):
+        self.name = name
+        self.HP = HP
+        self.STR = STR
+
+    def __str__(self): 
+        boss_print = f"""
+**{dark_red}{self.name}{RESET}**
+{RED}STR : {self.STR}{RESET}
+{GREEN}HP : {self.HP}{RESET}"""
+        return boss_print

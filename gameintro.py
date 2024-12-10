@@ -58,24 +58,47 @@ def game_intro():
 #game_intro()
 
 
-
-def game_outro():
-    victory_text = rf"""{YELLOW}
+def game_outro_escape(): 
+    victory_text_2 = rf"""{YELLOW}
 
  __   __   __     ______     ______   ______     ______     __  __  
 /\ \ / /  /\ \   /\  ___\   /\__  _\ /\  __ \   /\  == \   /\ \_\ \   
 \ \ \' /  \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
  \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
   \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ {RESET}"""
-    outro_text= """                                                                      
+    outro_text_2= """                                                                      
 \nYou escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
 "Schwarzenegger, you saved us all. Rest now, but stay ready."
 
 The world is safe... For now.
 
-Game Complete!
+Game Complete (bad ending)!
 Thank you for playing."""
-    blink_logo(victory_text, delay = 0.5, times = 3)
-    print(victory_text)
-    print_with_delay(outro_text,0.05)
+    blink_logo(victory_text_2, delay = 0.5, times = 3)
+    print(victory_text_2)
+    print_with_delay(outro_text_2,0.05)
+    exit()
+
+def game_outro_kill(): 
+    victory_text_1 = rf"""{YELLOW}
+
+ __   __   __     ______     ______   ______     ______     __  __  
+/\ \ / /  /\ \   /\  ___\   /\__  _\ /\  __ \   /\  == \   /\ \_\ \   
+\ \ \' /  \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
+ \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
+  \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ {RESET}"""
+    outro_text_1= """                                                                      
+\nYou escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
+"Schwarzenegger, you saved us all. Rest now, but stay ready."
+
+The world is safe... For now.
+
+Game Complete (good ending)!
+Thank you for playing."""
+    blink_logo(victory_text_1, delay = 0.5, times = 3)
+    print(victory_text_1)
+    print_with_delay(outro_text_1,0.05)
+    exit()
+ 
+
  
