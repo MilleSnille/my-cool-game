@@ -16,7 +16,7 @@ def print_with_delay(text,delay):
         time.sleep(delay)
     print()  # Ny rad efter texten
 
-def Clear_screen():
+def clear_screen():
     sys.stdout.write("\033c")
     sys.stdout.flush()
 
@@ -25,7 +25,7 @@ def blink_logo(text, delay=0.8, times=5):
         print(text, end='', flush=True)
         time.sleep(delay)
 
-        Clear_screen()
+        clear_screen()
         time.sleep(delay)
         
 
