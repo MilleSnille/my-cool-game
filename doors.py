@@ -70,8 +70,8 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
                 classes.p1.LVL += 1
                 classes.p2.LVL += 1
                 print(f"You defeated the monster and leveled up to {BLUE}LVL:{classes.selected_player.LVL}{RESET}")
-                if classes.selected_player.LVL == 10:
-                    print(f"You reached {BLUE}LVL: 10{RESET}")
+                if classes.selected_player.LVL == 5:
+                    print(f"You reached {BLUE}LVL: 5{RESET}")
                     boss_encounter()
                 else:
                     break
@@ -113,7 +113,7 @@ def boss_encounter():
             if random_number == 4:
                 game_outro_escape()
             elif random_number == 1 or random_number == 2 or random_number ==3: 
-                print(f"You got swatted by {RED}{random_boss.name}{RESET} and took {RED}{boss_damage} damage{RESET}")
+                print(f"You got wacked by {RED}{random_boss.name}{RESET} and took {RED}{boss_damage} damage{RESET}")
                 classes.selected_player.take_damage(boss_damage)
         elif action.lower == "stats" or action == "3": 
                 classes.print_stats()
