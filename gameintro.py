@@ -59,13 +59,13 @@ def game_intro():
 
 
 def game_outro_escape(): 
-    victory_text_2 = rf"""{YELLOW}
+    escaped_text_2 = rf"""{YELLOW}
 
- __   __   __     ______     ______   ______     ______     __  __  
-/\ \ / /  /\ \   /\  ___\   /\__  _\ /\  __ \   /\  == \   /\ \_\ \   
-\ \ \' /  \ \ \  \ \ \____  \/_/\ \/ \ \ \/\ \  \ \  __<   \ \____ \  
- \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
-  \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ {RESET}"""
+ __  __     ______     __  __        ______     ______     ______     ______     ______   ______     _____    
+/\ \_\ \   /\  __ \   /\ \/\ \      /\  ___\   /\  ___\   /\  ___\   /\  __ \   /\  == \ /\  ___\   /\  __-.  
+\ \____ \  \ \ \/\ \  \ \ \_\ \     \ \  __\   \ \___  \  \ \ \____  \ \  __ \  \ \  _-/ \ \  __\   \ \ \/\ \ 
+ \/\_____\  \ \_____\  \ \_____\     \ \_____\  \/\_____\  \ \_____\  \ \_\ \_\  \ \_\    \ \_____\  \ \____- 
+  \/_____/   \/_____/   \/_____/      \/_____/   \/_____/   \/_____/   \/_/\/_/   \/_/     \/_____/   \/____/ {RESET}"""
     outro_text_2= """                                                                      
 \nYou espace the Entitys grasp, the horrors of Project Helios still remain. 
 "Schwarzenegger, you've saved your self. But left the world in terrible danger..."
@@ -76,8 +76,8 @@ The world is not safe...
 
 Game Complete (bad ending)!
 Thank you for playing."""
-    blink_logo(victory_text_2, delay = 0.5, times = 3)
-    print(victory_text_2)
+    blink_logo(escaped_text_2, delay = 0.5, times = 3)
+    print(escaped_text_2)
     print_with_delay(outro_text_2,0.05)
     exit()
 

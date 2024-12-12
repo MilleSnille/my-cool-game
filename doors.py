@@ -39,6 +39,7 @@ def get_random_boss(): #returnerar ett slumpmässigt boss från en lista
     boss_types = [
         classes.boss("P.DIDDY EXTREME", 160, 55),
         classes.boss("The Destoryer", 155, 65),
+        classes.boss("B.O.B", 175, 45)
     ]
     random_boss = rand.choice(boss_types)
     return random_boss
@@ -58,7 +59,7 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
     while True:
         flee_or_fight = input(f"\nYou've still got time to flee! But remember, if you don't fight {random_enemy.name}, you might not get out of here!\n[1]Fight\n[2]Flee\n[3]Statistics\n") 
         if flee_or_fight == "1" or flee_or_fight.lower() == "fight": 
-            enemy_damage = rand.randint(10,20)
+            enemy_damage = rand.randint(8,20)
             # jämför spelarens styrka och HP mot monstrets
             if classes.selected_player.HP / random_enemy.STR < random_enemy.HP / classes.selected_player.STR: 
                 print(f"{dark_red}{random_enemy.name}{RESET} was stronger than you! You lost {enemy_damage} HP.")
@@ -71,7 +72,7 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
                 classes.p2.LVL += 1
                 print(f"You defeated the monster and leveled up to {BLUE}LVL:{classes.selected_player.LVL}{RESET}")
                 if classes.selected_player.LVL == 5:
-                    print(f"You reached {BLUE}LVL: 5{RESET}")
+                    print(f"You reached {BLUE}LVL: 5{RESET}\n")
                     boss_encounter()
                 else:
                     break
@@ -236,12 +237,12 @@ def door_choice(): # låter spelaren välja en dörr och bestämmer vad som finn
         print("There are only three doors, choose either [1], [2] or [3]!")
 
     if chosen_alternative == "burning room": 
-        # Slumpa fram en skada mellan 5 och 15 HP
-        damage = rand.randint(4, 15)
+        # Slumpa fram en skada mellan 2 och 15 HP
+        damage = rand.randint(2, 15)
         classes.selected_player.take_damage(damage)
     elif chosen_alternative == "infested room":
-        # Slumpa fram mellan 2 och 10 HP, som den andra fällan fast mindre skada
-        damage = rand.randint(2, 10)
+        # Slumpa fram mellan 4 och 10 HP, som den andra fällan fast mindre skada
+        damage = rand.randint(4, 10)
         classes.selected_player.take_damage(damage)
     elif chosen_alternative == "Monster": 
         print("Round One Fight!")
