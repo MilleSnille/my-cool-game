@@ -24,11 +24,11 @@ def get_random_enemy(): #returnerar ett slumpmässigt monster från en lista
     enemy_types = [
         classes.enemy("ZOMBIE", 100, 5),
         classes.enemy("SCOBBY DOO", 55, 20),
-        classes.enemy("DIDDY", 125, 50),
+        classes.enemy("DIDDY", 110, 45),
         classes.enemy("The Terminator", 130, 70),
         classes.enemy("Shrek", 120, 10),
         classes.enemy("Leon S Kennedy", 75, 20),
-        classes.enemy("Boris Golitsyn", 60, 40)
+        classes.enemy("Boris Golitsyn", 50, 40)
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy
@@ -37,19 +37,20 @@ def get_random_enemy(): #returnerar ett slumpmässigt monster från en lista
 def get_random_boss(): #returnerar ett slumpmässigt boss från en lista
     global random_boss
     boss_types = [
-        classes.boss("P.DIDDY EXTREME", 175, 55),
-        classes.boss("The Destoryer", 150, 80),
+        classes.boss("P.DIDDY EXTREME", 160, 55),
+        classes.boss("The Destoryer", 155, 65),
     ]
     random_boss = rand.choice(boss_types)
     return random_boss
     
-def game_ending(self):
-    while True:
-        if self.LVL == 10 or self.LVL > 10:
-            print(f"You reached {BLUE}LVL: 10{RESET}")
-            boss_encounter()
-        else:
-            break
+# def game_ending(self):
+#     while True:
+#         if self.LVL == 10 or self.LVL > 10:
+#             print(f"You reached {BLUE}LVL: 10{RESET}")
+            
+#         else:
+#             break
+
 
 def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när man möter ett monster
     global random_enemy
@@ -69,9 +70,12 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
                 classes.p1.LVL += 1
                 classes.p2.LVL += 1
                 print(f"You defeated the monster and leveled up to {BLUE}LVL:{classes.selected_player.LVL}{RESET}")
-                game_ending()
+                if classes.selected_player.LVL == 10:
+                    print(f"You reached {BLUE}LVL: 10{RESET}")
+                    boss_encounter()
+                else:
+                    break
                 # classes.selected_player.game_ending()
-                break
             else: 
                 print(f"You and {dark_red}{random_enemy.name}{RESET} were evenly strong. {dark_red}{random_enemy.name}{RESET} fled!")
                 break
@@ -91,11 +95,11 @@ def enemy_encounter():  #skapar en funktion som bestämmer vad som händer när 
 
 def boss_encounter():
     global random_boss
-    print(f"The room begins to shake and {RED}{random_boss}{RESET} appers")
+    print(f"The room begins to shake and {get_random_boss()} \nappears;\n")
     while True:
-        action = input(f"{RED}{random_boss}{RESET} is faster than you, so your forced to fight!\n [1]Fight\n [2] Try to escape\n [3] Stats\n")
+        action = input(f"{RED}{random_boss.name}{RESET} is faster than you, so your forced to fight!\n[1]Fight\n[2]Try to escape\n[3]Stats\n")
+        boss_damage = rand.randint(1000,2000)
         if action.lower() == "fight" or action == "1":
-            boss_damage = 1000
             if classes.selected_player.HP / random_boss.STR < random_boss.HP / classes.selected_player.STR: 
                 print(f"{RED}{random_boss.name}{RESET} was stronger than you! You lost {boss_damage} HP.")
                 classes.selected_player.take_damage(boss_damage)
@@ -105,11 +109,11 @@ def boss_encounter():
                 print(f"You defeated {RED}{random_boss.name}{RESET}")
                 game_outro_kill()
         if action.lower() == "escape" or action == "2":
-            random_number = rand.randint(1, 5)
-            if random_number == 5:
+            random_number = rand.randint(1, 4)
+            if random_number == 4:
                 game_outro_escape()
-            elif random_number == 1 or random_number == 2 or random_number == 3 or random_number == 4: 
-                print(f"You got swatted by {RED}{random_boss}{RESET} and took {boss_damage}")
+            elif random_number == 1 or random_number == 2 or random_number ==3: 
+                print(f"You got swatted by {RED}{random_boss.name}{RESET} and took {RED}{boss_damage} damage{RESET}")
                 classes.selected_player.take_damage(boss_damage)
         elif action.lower == "stats" or action == "3": 
                 classes.print_stats()
@@ -123,19 +127,26 @@ def boss_encounter():
 
 def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista 
     global random_item
-    chest_items = [
-        classes.item("Dissecting Set", 10, 0),
-        classes.item("Acid bottle", 15, 0),
-        classes.item("Mop", 8, 0),
-        classes.item("Glass Shard", 12, 0),
+    global random_number
+
+    random_number = rand.randint(1, 25)
+    if random_number == 10:
+        random_item = classes.item("Helios Blade", 100, 0)
+        return random_item
+    else:
+        chest_items = [
+        classes.item("Dissecting Set", 12, 0),
+        classes.item("Acid bottle", 16, 0),
+        classes.item("Mop", 5, 0),
+        classes.item("Glass Shard", 15, 0),
         classes.item("Energy Sword", 25, 0),
-        classes.item("Flame Thrower", 20, 0),
-        classes.item("Estus Flask", 0, 50),
-        classes.item("Diddy Oil", 0, 25)
+        classes.item("Flame Thrower", 18, 0),
+        classes.item("Estus Flask", 0, 60),
+        classes.item("Diddy Oil", 0, 50)
     ]
     #lista med items man kan få ur en chest
-    random_item = rand.choice(chest_items)
-    return random_item
+        random_item = rand.choice(chest_items)
+        return random_item
     #som sedan returneras så att random_item får ett nytt temporärt värde
     #snarlikt till enemy listan
 

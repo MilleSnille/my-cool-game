@@ -67,10 +67,12 @@ def game_outro_escape():
  \ \__|    \ \_\  \ \_____\    \ \_\  \ \_____\  \ \_\ \_\  \/\_____\ 
   \/_/      \/_/   \/_____/     \/_/   \/_____/   \/_/ /_/   \/_____/ {RESET}"""
     outro_text_2= """                                                                      
-\nYou escape the ruins, the horrors of Project Helios silenced. As rescue arrives, the President's message rings clear:
-"Schwarzenegger, you saved us all. Rest now, but stay ready."
+\nYou espace the Entitys grasp, the horrors of Project Helios still remain. 
+"Schwarzenegger, you've saved your self. But left the world in terrible danger..."
+As rescue arrives, the Entity grows stronger, destroying everything in its path including the rescue team.
+The Entity manages to escape causing a worldwide zombie apocalypse since YOU did not kill it!
 
-The world is safe... For now.
+The world is not safe... 
 
 Game Complete (bad ending)!
 Thank you for playing."""
