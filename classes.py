@@ -59,8 +59,6 @@ class item:
         return item_print
 
 
-
-
 def print_stats():
     if selected_player: 
         print(f"**{light_blue}{selected_player.name}{RESET}**\n{GREEN}HP: {selected_player.HP}{RESET}\n{RED}STR: {selected_player.STR}{RESET}\n{BLUE}LVL: {selected_player.LVL}{RESET}")

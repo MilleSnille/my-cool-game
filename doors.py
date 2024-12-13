@@ -5,7 +5,6 @@ from gameintro import game_outro_escape
 from gameintro import game_outro_kill
 
 # skapar textfärger (ANSI)
-BLINK = "\033[5m"
 RED = "\033[31m"
 dark_red = "\033[38;2;139;0;0m"
 GREEN = "\033[32m"
@@ -28,7 +27,7 @@ def get_random_enemy(): #returnerar ett slumpmässigt monster från en lista
         classes.enemy("The Terminator", 130, 70),
         classes.enemy("Shrek", 120, 10),
         classes.enemy("Leon S Kennedy", 75, 20),
-        classes.enemy("Boris Golitsyn", 50, 40)
+        classes.enemy("Boris Golitsyn", 50, 40),
     ]
     random_enemy = rand.choice(enemy_types)
     return random_enemy
@@ -124,8 +123,6 @@ def boss_encounter():
             continue
 
 
-
-
 def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista 
     global random_item
     global random_number
@@ -156,7 +153,7 @@ def add_random_item(): # bestämmer vad som händer när spelaren hittar ett fö
     while True:
         if random_item.name == "Estus Flask" or random_item.name == "Diddy Oil": 
             # vad som specifikt händer om föremålet är Estus Flask
-            while True:
+            while True: 
                 answer = input(f"Do you want to consume the {YELLOW}{random_item.name}{RESET}? [Y] to consume or [N] to leave it behind\n")
                 if answer.lower() in ["n", "no"]:
                     print(f"You left the {random_item.name} behind...\n")
