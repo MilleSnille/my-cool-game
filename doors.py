@@ -97,7 +97,7 @@ def boss_encounter():
     global random_boss
     print(f"The room begins to shake and {get_random_boss()} \nappears;\n")
     while True:
-        action = input(f"{RED}{random_boss.name}{RESET} is faster than you, so your forced to fight!\n[1]Fight\n[2]Try to escape\n[3]Stats\n")
+        action = input(f"{RED}{random_boss.name}{RESET} is faster than you, so your forced to fight!\n[1]Fight\n[2]Try to escape\n[3]Statistics\n")
         boss_damage = rand.randint(1000,2000)
         if action.lower() == "fight" or action == "1":
             if classes.selected_player.HP / random_boss.STR < random_boss.HP / classes.selected_player.STR: 
@@ -121,7 +121,6 @@ def boss_encounter():
         else: 
             print("Invadid input. Choose an option; [1], [2] or [3]")
             continue
-
 
 def get_random_chest_item(): # returnerar ett slumpmässigt item från en lista 
     global random_item
@@ -220,8 +219,8 @@ def door_choice(): # låter spelaren välja en dörr och bestämmer vad som finn
     global door_alternatives
     chosen_alternative = None #<-- detta ger den ett standardvärde vilket gör så att även om spelaren skriver in annat än "1, 2 eller 3" så kraschar inte spelet.
 
-    door = (input("\nYou have come 3 doors. You may proceed into the unknown... \n(Enter one of the 3 doors.)\n[1]LEFT\n[2]FORWARD\n[3]RIGHT\n"))
-    if door == "1" or door == "left" or door == "Left":  
+    door = input("\nYou have come 3 doors. You may proceed into the unknown... \n(Enter one of the 3 doors.)\n[1]LEFT\n[2]FORWARD\n[3]RIGHT\n")
+    if door == "1" or door.lower() == "left":  
         chosen_alternative = rand.choice(door_alternatives) 
         print("You have now encountered a", chosen_alternative)
     elif door == "2" or door.lower() == "forward": 
